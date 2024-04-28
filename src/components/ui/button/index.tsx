@@ -1,4 +1,6 @@
-type ButtonProps = {
+import './index.scss'
+
+interface ButtonProps  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   type: 'submit' | 'button'
   variant: 'primary' | 'secondary'
   children: React.ReactNode
@@ -9,7 +11,7 @@ type ButtonProps = {
 
 export const Button = (props: ButtonProps) => {
   return (
-    <button className={props.variant} type={props.type}>
+    <button {...props} className={`${props.variant} ${props.className}`} >
       {props.iconLeft}
       {props.children}
       {props.iconRight}

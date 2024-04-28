@@ -1,15 +1,17 @@
 import React from 'react'
+import SingleHeader from '../components/singleHeader'
 
 type LoginLayoutProps = {
   children: React.ReactNode
 }
 
-export const LoginLayout = ({ children }: LoginLayoutProps) => {
+const LoginLayout = ({ children }: LoginLayoutProps) => {
   return (
     <>
-      <header></header>
+      <SingleHeader />
       <main>{children}</main>
-      <footer></footer>
     </>
   )
 }
+
+export default LoginLayout

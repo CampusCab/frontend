@@ -1,0 +1,23 @@
+@import 'src/styles/colors.scss';
+
+.input {
+  width: 100%;
+  margin: 1rem 0;
+
+  &__field {
+    display: flex;
+    border-bottom: 1px solid $primary-color;
+    padding-bottom: 5px;
+
+    input {
+      width: 100%;
+      background-color: transparent;    
+      color: $primary-color;
+      padding: 0 10px;
+
+      &::placeholder {
+        color: $primary-color;
+      }
+    }
+  }
+}

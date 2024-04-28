@@ -1,9 +1,14 @@
-import { LoginForm } from '../../containers/loginForm'
+import LoginForm from '../../containers/loginForm'
+import LoginLayout from '../../layouts/login'
 
-export const LoginPage = () => {
+const LoginPage = () => {
   return (
-    <section>
-      <LoginForm />
-    </section>
+    <>
+      <LoginLayout>
+        <LoginForm />
+      </LoginLayout>
+    </>
   )
 }
+
+export default LoginPage

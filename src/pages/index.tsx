@@ -1,5 +1,8 @@
 import { Route } from 'react-router-dom'
 import Home from './home'
+import LoginPage from './login'
+import RegisterPage from './register'
+import ConfirmRegister from '../containers/confirmRegister'
 
 type Route = {
   path: string
@@ -15,8 +18,20 @@ export const PAGES: Route[] = [
     exact: true
   },
   {
-    path: '/about',
-    element: <div>About</div>,
+    path: '/login',
+    element: <LoginPage />,
     exact: true
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
+    exact: true,
+    children: [
+      {
+        path: ':id/confirm',
+        element: <ConfirmRegister />,
+        exact: true
+      }
+    ]
   }
 ]
