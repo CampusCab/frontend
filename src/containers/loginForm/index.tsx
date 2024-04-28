@@ -1,14 +1,14 @@
 import './index.scss'
 
 import { Controller, useForm } from 'react-hook-form'
-import { TloginForm } from '../../config/types/forms'
 import { Input } from '../../components/ui/input'
 import { Button } from '../../components/ui/button'
 import { EmailIcon, LockIcon } from '../../components/ui/icon'
 import { useNavigate } from 'react-router-dom'
+import { TLoginForm } from '../../config/types'
 
 const LoginForm = () => {
-  const { control, handleSubmit } = useForm<TloginForm>()
+  const { control, handleSubmit } = useForm<TLoginForm>()
   const navigate = useNavigate()
 
   return (
@@ -25,7 +25,7 @@ const LoginForm = () => {
               name='email'
               placeholder='Correo institucional'
               type='email'
-              icon={<EmailIcon style={{}} />}
+              icon={<EmailIcon />}
               value={field.value}
               erroMessage={fieldState.error?.message}
               onChange={field.onChange}

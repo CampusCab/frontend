@@ -1,7 +1,7 @@
 import React from 'react'
 import SingleHeader from '../components/singleHeader'
 
-type LoginLayoutProps = {
+export type LoginLayoutProps = {
   children: React.ReactNode
 }
 
@@ -9,7 +9,7 @@ const LoginLayout = ({ children }: LoginLayoutProps) => {
   return (
     <>
       <SingleHeader />
-      <main>{children}</main>
+      <main style={{height: '100%', display: 'flex'}}>{children}</main>
     </>
   )
 }

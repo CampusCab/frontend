@@ -3,6 +3,7 @@ import Home from './home'
 import LoginPage from './login'
 import RegisterPage from './register'
 import ConfirmRegister from '../containers/confirmRegister'
+import LoginLayout from '../layouts/login'
 
 type Route = {
   path: string
@@ -29,7 +30,11 @@ export const PAGES: Route[] = [
     children: [
       {
         path: ':id/confirm',
-        element: <ConfirmRegister />,
+        element: (
+          <LoginLayout>
+            <ConfirmRegister />
+          </LoginLayout>
+        ),
         exact: true
       }
     ]

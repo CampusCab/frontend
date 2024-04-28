@@ -7,10 +7,18 @@
 * {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  color: $primary-color;
 }
 
-body {
-  background-color: $secondary-color;
-  padding: 10px;
-  color: $primary-color;
+html, body{
+  background-color: $main-bg-color;
+
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  background-color: $main-bg-color;
+ height: 100vh;
+  min-height: 100%;
 }
