@@ -4,6 +4,8 @@ import LoginPage from './login'
 import RegisterPage from './register'
 import ConfirmRegister from '../containers/confirmRegister'
 import LoginLayout from '../layouts/login'
+import FindTrip from './findTrip'
+import OfferTrip from './offerTrip'
 
 type Route = {
   path: string
@@ -38,5 +40,16 @@ export const PAGES: Route[] = [
         exact: true
       }
     ]
-  }
+  },
+  {
+    path: '/find-trip',
+    element: <FindTrip />,
+    exact: true,
+    
+  },
+  {
+    path: '/offer-trip',
+    element: <OfferTrip />,
+    exact: true,
+  },  
 ]

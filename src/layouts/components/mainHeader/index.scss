@@ -1,0 +1,26 @@
+@import 'src/styles/colors.scss';
+
+.main-header {
+  height: 100px;
+  display: flex;
+  position: fixed;
+  background-color: $secondary-color;
+  border-radius: 0 0 1rem 1rem;
+  -webkit-border-radius: 0 0 1rem 1rem;
+  -moz-border-radius: 0 0 1rem 1rem;
+  -ms-border-radius: 0 0 1rem 1rem;
+  -o-border-radius: 0 0 1rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1rem 2rem;
+
+  .logo {
+    width: 50%;
+  }
+
+  .user-profile{
+    width: 10%;
+    cursor: pointer;
+  }
+}

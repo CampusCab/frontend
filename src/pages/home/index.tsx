@@ -1,8 +1,17 @@
+import './index.scss'
+
+import MainLayout from '../../layouts/main'
+
 function Home() {
   return (
     <>
-      
-      <h1 className='text-3xl font-bold underline'>Hello world!</h1>
+      <MainLayout>
+        <section className='welcome'>
+          <h2>Bienvenido</h2>
+          <p>¿A dónde quieres ir ahora?</p>
+          <img src='/src/assets/banner.svg' alt='Campuscap banner' />
+        </section>
+      </MainLayout>
     </>
   )
 }
