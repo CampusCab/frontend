@@ -2,7 +2,7 @@
   "name": "CampusCab",
   "short_name": "CampusCab",
   "description": "CampusCab es una app de CarPooling para la comunidad de la Universidad Nacional de Colombia, sede Medellín. Conecta conductores y pasajeros para compartir viajes hacia o desde los campus",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
