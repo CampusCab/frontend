@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import './index.scss'
+import { CarIcon, RideIcon } from '../ui/icon'
 
 const NavMenu = () => {
   const navigate = useNavigate()
@@ -19,7 +20,7 @@ const NavMenu = () => {
           handleNavigate('/find-trip')
         }}
       >
-        <img src='/src/assets/ride.svg' alt='Find ride icon' />
+        <RideIcon />
         <p>Buscar viaje</p>
       </div>
       <div
@@ -30,7 +31,7 @@ const NavMenu = () => {
           handleNavigate('/offer-trip')
         }}
       >
-        <img src='/src/assets/car.svg' alt='Publish ride icon' />
+        <CarIcon />
         <p>Ofrecer viaje</p>
       </div>
     </section>

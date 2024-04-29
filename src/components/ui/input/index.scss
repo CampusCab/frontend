@@ -28,3 +28,27 @@
     }
   }
 }
+
+.search-bar {
+  .input__field {
+    display: flex;
+    border-bottom: none;
+    padding: 0;
+    background-color: $aux-bg-color;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+    padding: 0 10px;
+
+    input {
+      color: $active-color;
+      padding: 20px 10px;
+    }
+
+    input::placeholder {
+      color: $inactive-color;
+    }
+  }
+}

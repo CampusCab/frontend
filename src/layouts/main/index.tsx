@@ -1,11 +1,8 @@
+import { LayoutProps } from '../../config/types/views'
 import MainFooter from '../components/mainFooter'
 import MainHeader from '../components/mainHeader'
 
-export type MainLayoutProps = {
-  children: React.ReactNode
-}
-
-const MainLayout = ({ children }: MainLayoutProps) => {
+const MainLayout = ({ children }: LayoutProps) => {
   return (
     <>
       <MainHeader />

@@ -1,9 +1,12 @@
+import TripsAvailable from '../../containers/tripsAvailable'
 import MainLayout from '../../layouts/main'
+
+
 
 const FindTrip = () => {
   return (
     <MainLayout>
-      <div>FindTrip</div>
+      <TripsAvailable />
     </MainLayout>
   )
 }

@@ -35,3 +35,47 @@ export const LockIcon = ({ onClick, style }: IconProps) => {
     />
   )
 }
+
+export const CarIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='src\assets\car.svg'
+      alt='Car icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const RideIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='src\assets\ride.svg'
+      alt='Ride icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const UserIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='src\assets\user.svg'
+      alt='User icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const SearchIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='src\assets\search.svg'
+      alt='Search icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}

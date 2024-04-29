@@ -5,7 +5,7 @@ import { Input } from '../../components/ui/input'
 import { Button } from '../../components/ui/button'
 import { EmailIcon, LockIcon } from '../../components/ui/icon'
 import { useNavigate } from 'react-router-dom'
-import { TLoginForm } from '../../config/types'
+import { TLoginForm } from '../../config/types/forms'
 
 const LoginForm = () => {
   const { control, handleSubmit } = useForm<TLoginForm>()
