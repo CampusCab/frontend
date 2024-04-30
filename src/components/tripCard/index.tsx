@@ -69,7 +69,7 @@ const TripCard = ({ item, success }: TripCardProps) => {
               ) : (
                 <>
                   <Input
-                    name='ofert'
+                    name='offer'
                     type='number'
                     value=''
                     variant='rounded'
