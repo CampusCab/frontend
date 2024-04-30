@@ -6,7 +6,14 @@ const MainLayout = ({ children }: LayoutProps) => {
   return (
     <>
       <MainHeader />
-      <main style={{ marginTop: '7rem', marginBottom: '5rem', height: '100%' }}>
+      <main
+        style={{
+          paddingTop: '7rem',
+          paddingBottom: '5rem',
+          height: '100%',
+          overflow: 'auto'
+        }}
+      >
         {children}
       </main>
       <MainFooter />

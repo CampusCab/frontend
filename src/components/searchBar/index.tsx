@@ -13,7 +13,7 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => {
         name='search'
         type='text'
         placeholder='¿A dónde quieres ir?'
-        className='search-bar'
+        variant='rounded'
         icon={<SearchIcon />}
         onChange={(e) => onChange(e.target.value)}
         value={value}

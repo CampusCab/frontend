@@ -1,11 +1,11 @@
 import MainLayout from '../../layouts/main'
 
-const OfferTrip = () => {
+const OfferTripPage = () => {
   return (
     <MainLayout>
-      <div>OfferTrip</div>
+      <div>OfferTripPage</div>
     </MainLayout>
   )
 }
 
-export default OfferTrip
+export default OfferTripPage

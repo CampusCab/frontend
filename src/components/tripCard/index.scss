@@ -1,0 +1,25 @@
+.trip {
+  display: flex;
+  margin: 1rem 0;
+
+  .details {
+    &__hour {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    &__places {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    h4 {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    img {
+      width: 1rem;
+    }
+  }
+}

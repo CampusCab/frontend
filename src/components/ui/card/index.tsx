@@ -1,24 +1,14 @@
 import './index.scss'
 
-import React, { ReactNode, useState } from 'react'
-
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  children?: ReactNode
-  description?: string
+interface CardProps {
+  children: React.ReactNode
+  onClick?: () => void
 }
 
-const Card = (props: CardProps) => {
-  const [showDescription, setShowDescription] = useState(false)
+const Card = ({ children, onClick }: CardProps) => {
   return (
-    <div
-      {...props}
-      onClick={() => setShowDescription(!showDescription)}
-      className='card'
-    >
-      {props.children}
-      <div>
-        {showDescription && props.description && <p>{props.description}</p>}
-      </div>
+    <div className='card' onClick={onClick}>
+      {children}
     </div>
   )
 }

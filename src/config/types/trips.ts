@@ -1,4 +1,5 @@
 export interface Driver {
+  image?: string
   idType: string
   idNumber: string
   firstName: string
@@ -14,5 +15,6 @@ export interface TripsList {
   date: string
   hour: string
   availableSeats: number
+  maxSeats: number
   description?: string
 }

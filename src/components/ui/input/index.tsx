@@ -10,6 +10,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type: string
   erroMessage?: string
   icon?: React.ReactNode
+  variant?: 'rounded' | 'default'
 }
 
 export const Input = (props: InputProps) => {
@@ -22,7 +23,7 @@ export const Input = (props: InputProps) => {
   }
 
   return (
-    <div className={`input ${props.className}`}>
+    <div className={`input ${props.variant}`}>
       {props.label && <label htmlFor={props.name}>{props.label}</label>}
       <div className='input__field'>
         {props.icon}

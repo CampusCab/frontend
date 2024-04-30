@@ -2,8 +2,8 @@ import './index.scss'
 
 interface ButtonProps  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   type: 'submit' | 'button'
-  variant: 'primary' | 'secondary'
-  children: React.ReactNode
+  variant: 'primary' | 'secondary' | 'inverse'
+  children?: React.ReactNode
   iconLeft?: React.ReactNode
   iconRight?: React.ReactNode
   onClick?: () => void
