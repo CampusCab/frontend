@@ -168,11 +168,33 @@ export const StarIconFilled = ({ onClick, style }: IconProps) => {
   )
 }
 
+export const StarIconBlueFilled = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/src/assets/star-blue-filled.svg'
+      alt='Star icon blue filled'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
 export const StarIconLined = ({ onClick, style }: IconProps) => {
   return (
     <img
       src='/src/assets/star-lined.svg'
       alt='Star icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const InfoIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/src/assets/info.svg'
+      alt='Info icon'
       onClick={onClick}
       style={{ ...style }}
     />
