@@ -1,8 +1,8 @@
-import { TripsList } from '../../config/types/trips'
+import { TripInfo } from '../../config/types/trips'
 import TripCard from '../../components/tripCard'
 
 type TripCardListProps = {
-  data: TripsList[]
+  data: TripInfo[]
 }
 
 const TripCardList = ({ data }: TripCardListProps) => {

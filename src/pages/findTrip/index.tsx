@@ -1,12 +1,12 @@
 import './index.scss'
 
 import { useState } from 'react'
-import { TripsList } from '../../config/types/trips'
+import { TripInfo } from '../../config/types/trips'
 import MainLayout from '../../layouts/main'
 import SearchBar from '../../components/searchBar'
 import TripCardList from '../../containers/tripCardList'
 
-const tripsList: TripsList[] = [
+const tripsList: TripInfo[] = [
   {
     id: 1,
     driver: {
@@ -14,7 +14,7 @@ const tripsList: TripsList[] = [
       idNumber: '123456789',
       firstName: 'Juan',
       lastName: 'Perez',
-      stars: 4.5
+      stars: '4.5'
     },
     origin: 'Bogotá',
     destination: 'Medellín',
@@ -32,7 +32,7 @@ const tripsList: TripsList[] = [
       idNumber: '987654321',
       firstName: 'Pedro',
       lastName: 'Gomez',
-      stars: 5
+      stars: '5.0'
     },
     origin: 'Medellín',
     destination: 'Bogotá',
@@ -46,7 +46,7 @@ const tripsList: TripsList[] = [
 ]
 
 const FindTripPage = () => {
-  const [trips, setTrips] = useState<TripsList[]>(tripsList)
+  const [trips, setTrips] = useState<TripInfo[]>(tripsList)
   const [search, setSearch] = useState('')
   return (
     <MainLayout>

@@ -8,8 +8,6 @@ const MainLayout = ({ children }: LayoutProps) => {
       <MainHeader />
       <main
         style={{
-          paddingTop: '7rem',
-          paddingBottom: '5rem',
           height: '100%',
           overflow: 'auto'
         }}

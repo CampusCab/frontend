@@ -54,8 +54,13 @@ export const PAGES: Route[] = [
     exact: true,
   },  
   {
-    path: '/your-trip',
+    path: '/your-trip/:id',
     element: <YourTripPage />,
+    exact: true
+  },
+  { 
+    path: '/rate-driver/:id', 
+    element: <YourTripPage />, 
     exact: true
   },
   {
