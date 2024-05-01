@@ -1,4 +1,4 @@
-import { LayoutProps } from '../../config/types'
+import { LayoutProps } from '../../config/types/views'
 import SingleHeader from '../components/singleHeader'
 
 const RegisterLayout = ({ children }: LayoutProps) => {

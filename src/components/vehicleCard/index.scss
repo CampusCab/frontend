@@ -1,0 +1,17 @@
+.vehicle-card {
+  display: flex;
+
+  > img {
+    padding-right: 10px;
+    width: 4rem;
+  }
+
+  .vehicle-info,
+  .vehicle-capacity {
+    display: flex;
+    > img {
+      width: 1rem;
+      margin-right: 10px;
+    }
+  }
+}

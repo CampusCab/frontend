@@ -2,7 +2,7 @@ import './index.scss'
 
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { TRegisterForm } from '../../config/types'
+import { TRegisterForm } from '../../config/types/forms'
 import { Input } from '../../components/ui/input'
 import { EmailIcon, LockIcon } from '../../components/ui/icon'
 import { Button } from '../../components/ui/button'

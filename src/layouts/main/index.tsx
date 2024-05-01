@@ -1,15 +1,17 @@
+import { LayoutProps } from '../../config/types/views'
 import MainFooter from '../components/mainFooter'
 import MainHeader from '../components/mainHeader'
 
-export type MainLayoutProps = {
-  children: React.ReactNode
-}
-
-const MainLayout = ({ children }: MainLayoutProps) => {
+const MainLayout = ({ children }: LayoutProps) => {
   return (
     <>
       <MainHeader />
-      <main style={{ marginTop: '7rem', marginBottom: '5rem', height: '100%' }}>
+      <main
+        style={{
+          height: '100%',
+          overflow: 'auto'
+        }}
+      >
         {children}
       </main>
       <MainFooter />

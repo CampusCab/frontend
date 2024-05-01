@@ -1,0 +1,41 @@
+@import '/src/styles/responsive.scss';
+
+.trip {
+  display: flex;
+  margin: 1rem 0;
+
+  .driver-image {
+    padding-right: 0.5rem;
+    padding-bottom: 0.2rem;
+    @include mobile-m {
+      padding-right: 0.2rem;
+    }
+  }
+
+  > img {
+    padding-right: 10px;
+  }
+
+  .details {
+    &__hour {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    &__places {
+      display: flex;
+      gap: 0.5rem;
+      @include mobile-m {
+        font-size: 15px;
+      }
+      @include mobile-s {
+        font-size: 12px;
+      }
+    }
+
+    img {
+      width: 1rem;
+    }
+  }
+}

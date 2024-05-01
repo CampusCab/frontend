@@ -1,0 +1,36 @@
+@import 'src/styles/responsive.scss';
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+p{
+    font-size: 1rem;
+    @include mobile-m{
+        font-size: 15px;
+    }
+    @include mobile-s{
+        font-size: 12px;
+    }
+}

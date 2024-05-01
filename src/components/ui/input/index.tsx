@@ -2,7 +2,7 @@ import './index.scss'
 import { useState } from 'react'
 import { HideIcon } from '../icon'
 
-type InputProps = {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string
   label?: string
   placeholder?: string
@@ -10,7 +10,7 @@ type InputProps = {
   type: string
   erroMessage?: string
   icon?: React.ReactNode
-  onChange: (value: string) => void
+  variant?: 'rounded' | 'default'
 }
 
 export const Input = (props: InputProps) => {
@@ -23,7 +23,7 @@ export const Input = (props: InputProps) => {
   }
 
   return (
-    <div className='input'>
+    <div className={`input ${props.variant}`}>
       {props.label && <label htmlFor={props.name}>{props.label}</label>}
       <div className='input__field'>
         {props.icon}
@@ -31,7 +31,7 @@ export const Input = (props: InputProps) => {
           type={inputType}
           value={props.value}
           placeholder={props.placeholder}
-          onChange={(e) => props.onChange(e.target.value)}
+          onChange={(e) => props.onChange && props.onChange(e)}
         />
         {props.type === 'password' && <HideIcon onClick={handleShowPassword} />}
       </div>

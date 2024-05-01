@@ -1,8 +1,3 @@
-// Layouts
-export type LayoutProps = {
-  children: React.ReactNode
-}
-
 // Forms
 export type TLoginForm = {
   email: string
