@@ -7,6 +7,7 @@ import LoginLayout from '../layouts/login'
 import FindTripPage from './findTrip'
 import OfferTripPage from './offerTrip'
 import YourTripPage from './yourTrip'
+import RateDriverPage from './rateDriver'
 
 type Route = {
   path: string
@@ -60,7 +61,7 @@ export const PAGES: Route[] = [
   },
   { 
     path: '/rate-driver/:id', 
-    element: <YourTripPage />, 
+    element: <RateDriverPage />, 
     exact: true
   },
   {

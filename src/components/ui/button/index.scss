@@ -11,6 +11,11 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:disabled {
+    background-color: $inactive-color;
+    color: $inactive-text-color;
+  }
 }
 
 .primary {

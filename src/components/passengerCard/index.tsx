@@ -12,7 +12,7 @@ const PassengerCard = ({ item }: PassengerCardProps) => {
   return (
     <Card>
       <div className='passenger-card'>
-        <img src={item.image ?? '/src/assets/male-avatar.svg'} alt='' />
+        <img src={item.image ?? '/src/assets/male-avatar.svg'} alt='Passenger image' />
         <div className='passenger-card__body'>
           <h4>
             {item.firstName} {item.lastName}
