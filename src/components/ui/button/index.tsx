@@ -1,6 +1,6 @@
 import './index.scss'
 
-interface ButtonProps  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   type: 'submit' | 'button'
   variant: 'primary' | 'secondary' | 'inverse'
   children?: React.ReactNode
@@ -9,12 +9,14 @@ interface ButtonProps  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void
 }
 
-export const Button = (props: ButtonProps) => {
+const Button = (props: ButtonProps) => {
   return (
-    <button {...props} className={`${props.variant} ${props.className}`} >
+    <button {...props} className={`${props.variant} ${props.className}`}>
       {props.iconLeft}
       {props.children}
       {props.iconRight}
     </button>
   )
 }
+
+export default Button

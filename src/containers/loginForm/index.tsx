@@ -1,8 +1,8 @@
 import './index.scss'
 
 import { Controller, useForm } from 'react-hook-form'
-import { Input } from '../../components/ui/input'
-import { Button } from '../../components/ui/button'
+import Input from '../../components/ui/input'
+import Button from '../../components/ui/button'
 import { EmailIcon, LockIcon } from '../../components/ui/icon'
 import { useNavigate } from 'react-router-dom'
 import { TLoginForm } from '../../config/types/forms'
@@ -47,13 +47,18 @@ const LoginForm = () => {
             />
           )}
         />
-        <Button type='submit' variant='primary' className='submit-button' >
+        <Button type='submit' variant='primary' className='submit-button'>
           Iniciar sesión
         </Button>
       </form>
       <div className='register-area'>
         <p>¿Aún no estás registrado?</p>
-        <Button type='button' variant='secondary' className='register-button' onClick={()=>navigate('/register')}>
+        <Button
+          type='button'
+          variant='secondary'
+          className='register-button'
+          onClick={() => navigate('/register')}
+        >
           Regístrate
         </Button>
       </div>

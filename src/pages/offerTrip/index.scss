@@ -1,0 +1,19 @@
+@import 'src/styles/colors.scss';
+@import 'src/styles/responsive.scss';
+
+.offer-trip{
+    margin: 0 2rem;
+    @include mobile-m{
+        margin: 0 1rem;
+    }
+
+    h2{
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: $primary-color;
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    
+}

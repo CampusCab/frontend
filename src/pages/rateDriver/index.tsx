@@ -3,7 +3,7 @@ import './index.scss'
 import LoginLayout from '../../layouts/login'
 import { StarIconBlueFilled, StarIconLined } from '../../components/ui/icon'
 import { useState } from 'react'
-import { Button } from '../../components/ui/button'
+import Button from '../../components/ui/button'
 
 const RateDriverPage = () => {
   const [rating, setRating] = useState([false, false, false, false, false])
@@ -47,7 +47,11 @@ const RateDriverPage = () => {
               }
             })}
           </div>
-          <Button type='button' variant='primary' disabled={!rating.includes(true)}>
+          <Button
+            type='button'
+            variant='primary'
+            disabled={!rating.includes(true)}
+          >
             Enviar calificación
           </Button>
         </div>

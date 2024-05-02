@@ -1,5 +1,5 @@
 import { SearchIcon } from '../ui/icon'
-import { Input } from '../ui/input'
+import Input from '../ui/input'
 
 type SearchBarProps = {
   onChange: (e: string) => void

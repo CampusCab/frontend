@@ -1,0 +1,15 @@
+@import 'src/styles/colors.scss';
+
+.vehicle-list {
+    
+  &__message {
+    text-align: center;
+    color: $inactive-text-color;
+    margin-top: 3rem;
+  }
+
+  > button {
+    margin: 0 auto;
+    margin-top: 1rem;
+  }
+}

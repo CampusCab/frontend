@@ -18,7 +18,7 @@ export interface Driver {
 
 export interface Vehicle {
   id: string
-  type: 'car' | 'motorcycle'
+  type: 'car' | 'bike'
   brand: string
   model: string
   year: number

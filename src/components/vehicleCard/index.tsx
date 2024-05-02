@@ -6,11 +6,12 @@ import { InfoIcon, PeopleIcon } from '../ui/icon'
 
 type VehicleCardProps = {
   item: Vehicle
+  onClick?: (vehicle: Vehicle) => void
 }
 
-const VehicleCard = ({ item }: VehicleCardProps) => {
+const VehicleCard = ({ item, onClick }: VehicleCardProps) => {
   return (
-    <Card>
+    <Card onClick={() => onClick && onClick(item)}>
       <div className='vehicle-card'>
         <img src={`/src/assets/${item.type}.svg`} alt='Vehicule image' />
         <div className='vehicle-card__body'>
