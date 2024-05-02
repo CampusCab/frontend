@@ -4,6 +4,8 @@ import DriverCard from '../../components/driverCard'
 import { Passenger, TripInfo, Vehicle } from '../../config/types/trips'
 import VehicleCard from '../../components/vehicleCard'
 import PassengersCardList from '../../containers/passengersCardList'
+import { useLocation } from 'react-router-dom'
+import OffersCardList from '../../containers/offersCardList'
 
 const item: TripInfo = {
   id: 1,
@@ -48,16 +50,32 @@ const passengers: Passenger[] = [
   }
 ]
 
+const offers: Passenger[] = [
+  {
+    idType: 'CC',
+    idNumber: '123456789',
+    firstName: 'Juan',
+    lastName: 'Perez',
+    offer: {
+      id: 1,
+      trip: item,
+      ammount: 30000
+    }
+  }
+]
+
 const YourTripPage = () => {
+  const { pathname } = useLocation()
+  const location = pathname.split('/')[1] === 'offer-trip'
+
   return (
-    <MainLayout>
-      <section className='your-trip'>
-        <h2>Tu próximo viaje</h2>
-        <DriverCard item={item} />
-        <VehicleCard item={vehicle} />
-        <PassengersCardList data={passengers} />
-      </section>
-    </MainLayout>
+    <section className='your-trip'>
+      <h2>Tu próximo viaje</h2>
+      <DriverCard item={item} />
+      <VehicleCard item={vehicle} />
+      {location && <OffersCardList data={offers} />}
+      <PassengersCardList data={passengers} />
+    </section>
   )
 }
 

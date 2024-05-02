@@ -13,6 +13,10 @@ h2 {
 h3 {
   font-size: 1.3rem;
   font-weight: bold;
+
+  @include mobile-m {
+    font-size: 1.1rem;
+  }
 }
 
 h4 {

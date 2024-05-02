@@ -91,11 +91,33 @@ export const MoneyBagIcon = ({ onClick, style }: IconProps) => {
   )
 }
 
+export const MoneyBagBlueIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/src/assets/money-bag-blue.svg'
+      alt='Money bag blue icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
 export const DestinationIcon = ({ onClick, style }: IconProps) => {
   return (
     <img
       src='/src/assets/destination.svg'
       alt='Destination icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const DestinationGreyIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/src/assets/destination-grey.svg'
+      alt='Destination grey icon'
       onClick={onClick}
       style={{ ...style }}
     />
@@ -113,11 +135,33 @@ export const OriginIcon = ({ onClick, style }: IconProps) => {
   )
 }
 
+export const OriginGreyIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/src/assets/origin-grey.svg'
+      alt='Origin grey icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
 export const ClockIcon = ({ onClick, style }: IconProps) => {
   return (
     <img
       src='/src/assets/clock.svg'
       alt='Clock icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const ClockGreyIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/src/assets/clock-grey.svg'
+      alt='Clock grey icon'
       onClick={onClick}
       style={{ ...style }}
     />
@@ -195,6 +239,28 @@ export const InfoIcon = ({ onClick, style }: IconProps) => {
     <img
       src='/src/assets/info.svg'
       alt='Info icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const WarningIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/src/assets/warning.svg'
+      alt='Warning icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const MinusIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/src/assets/minus.svg'
+      alt='Minus icon'
       onClick={onClick}
       style={{ ...style }}
     />

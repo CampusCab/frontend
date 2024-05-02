@@ -2,33 +2,29 @@ import './index.scss'
 import { useState } from 'react'
 import { HideIcon } from '../icon'
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   name: string
   label?: string
   placeholder?: string
   value: string
-  type: string
   erroMessage?: string
   icon?: React.ReactNode
   variant?: 'rounded' | 'default'
 }
 
-const Input = (props: InputProps) => {
-  const [inputType, setInputType] = useState(props.type)
+const TextArea = (props: InputProps) => {
   const [showPassword, setShowPassword] = useState(false)
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword)
-    setInputType(showPassword ? 'password' : 'text')
   }
 
   return (
-    <div className={`input ${props.variant}`}>
+    <div className={`text-area ${props.variant}`}>
       {props.label && <label htmlFor={props.name}>{props.label}</label>}
-      <div className='input__field'>
+      <div className='text-area__field'>
         {props.icon}
-        <input
-          type={inputType}
+        <textarea
           value={props.value}
           placeholder={props.placeholder}
           onChange={(e) => props.onChange && props.onChange(e)}
@@ -40,4 +36,4 @@ const Input = (props: InputProps) => {
   )
 }
 
-export default Input
+export default TextArea

@@ -47,21 +47,30 @@ export const PAGES: Route[] = [
     path: '/find-trip',
     element: <FindTripPage />,
     exact: true,
-    
+    children: [
+      {
+        path: 'your-trip/:id',
+        element: <YourTripPage />,
+        exact: true
+      }
+    ]
   },
   {
     path: '/offer-trip',
     element: <OfferTripPage />,
     exact: true,
-  },  
-  {
-    path: '/your-trip/:id',
-    element: <YourTripPage />,
-    exact: true
+    children: [
+      {
+        path: 'your-trip/:id',
+        element: <YourTripPage />,
+        exact: true
+      }
+    ]
   },
-  { 
-    path: '/rate-driver/:id', 
-    element: <RateDriverPage />, 
+
+  {
+    path: '/rate-driver/:id',
+    element: <RateDriverPage />,
     exact: true
   },
   {

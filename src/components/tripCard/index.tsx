@@ -1,8 +1,8 @@
 import './index.scss'
 
 import { useState } from 'react'
-import { Input } from '../ui/input'
-import { Button } from '../ui/button'
+import Input from '../ui/input'
+import Button from '../ui/button'
 import { CheckIcon, MoneyBagIcon, SendIcon } from '../ui/icon'
 import DriverCard, { DriverCardProps } from '../driverCard'
 

@@ -1,3 +1,5 @@
+import { Vehicle } from "./trips"
+
 // Forms
 export type TLoginForm = {
   email: string
@@ -20,4 +22,12 @@ export type TConfirmRegisterForm = {
   char4: number
   char5: number
   char6: number
+}
+
+export type TOfferTrip = {
+  vehicle: Vehicle
+  origin: string
+  destination: string
+  hour: string
+  description: string
 }

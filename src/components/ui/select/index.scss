@@ -1,0 +1,30 @@
+@import 'src/styles/colors.scss';
+
+
+.select {
+    margin-top: 1rem;
+
+
+  &__options {
+    display: flex;
+    align-items: center;
+
+    > select {
+      width: 100%;
+      padding: 10px 20px;
+      background-color: $aux-bg-color;
+      color: $primary-color;
+      border-radius: 2rem;
+      -webkit-border-radius: 2rem;
+      -moz-border-radius: 2rem;
+      -ms-border-radius: 2rem;
+      -o-border-radius: 2rem;
+}
+
+    > img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+  }
+}

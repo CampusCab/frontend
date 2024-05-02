@@ -5,6 +5,7 @@ import { TripInfo } from '../../config/types/trips'
 import MainLayout from '../../layouts/main'
 import SearchBar from '../../components/searchBar'
 import TripCardList from '../../containers/tripCardList'
+import { Outlet } from 'react-router-dom'
 
 const tripsList: TripInfo[] = [
   {
@@ -47,14 +48,19 @@ const tripsList: TripInfo[] = [
 
 const FindTripPage = () => {
   const [trips, setTrips] = useState<TripInfo[]>(tripsList)
+  const [hasTrip, setHasTrip] = useState(false)
+
   const [search, setSearch] = useState('')
   return (
     <MainLayout>
-      <section className='trip-list'>
-        <SearchBar value={search} onChange={(e) => setSearch(e)} />
-        <h2>Viajes disponibles</h2>
-        <TripCardList data={trips} />
-      </section>
+      {!hasTrip && (
+        <section className='trip-list'>
+          <SearchBar value={search} onChange={(e) => setSearch(e)} />
+          <h2>Viajes disponibles</h2>
+          <TripCardList data={trips} />
+        </section>
+      )}
+      <Outlet />
     </MainLayout>
   )
 }
