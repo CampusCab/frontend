@@ -136,11 +136,11 @@ const OfferTripForm = () => {
 
   return (
     <section className='offer-trip'>
-      <h2>
+      <h3>
         {showDetails
           ? 'Completa la información del viaje'
           : 'Selecciona el vehículo que usarás'}
-      </h2>
+      </h3>
       {showDetails ? renderForm : renderVehicleList}
     </section>
   )

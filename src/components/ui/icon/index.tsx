@@ -91,6 +91,17 @@ export const MoneyBagIcon = ({ onClick, style }: IconProps) => {
   )
 }
 
+export const MoneyBagBlueIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/src/assets/money-bag-blue.svg'
+      alt='Money bag blue icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
 export const DestinationIcon = ({ onClick, style }: IconProps) => {
   return (
     <img
@@ -239,6 +250,17 @@ export const WarningIcon = ({ onClick, style }: IconProps) => {
     <img
       src='/src/assets/warning.svg'
       alt='Warning icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const MinusIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/src/assets/minus.svg'
+      alt='Minus icon'
       onClick={onClick}
       style={{ ...style }}
     />

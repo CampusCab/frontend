@@ -10,7 +10,7 @@ const PassengersCardList = ({ data }: PassengersCardListProps) => {
     <div>
       <h3>Pasajeros</h3>
       {data.map((passenger, index) => (
-        <PassegnerCard key={index} item={passenger} />
+        <PassegnerCard key={index} item={passenger} hasDelete />
       ))}
     </div>
   )

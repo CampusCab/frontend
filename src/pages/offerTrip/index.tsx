@@ -5,17 +5,19 @@ import ActionModal from '../../components/actionModal'
 import Button from '../../components/ui/button'
 import { WarningIcon } from '../../components/ui/icon'
 import MainLayout from '../../layouts/main'
-import { useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import OfferTripForm from '../../containers/offerTripForm'
 
 const OfferTripPage = () => {
   const [showModal, setShowModal] = useState(false)
+  const [hasTrip, setHasTrip] = useState(false)
   const navigate = useNavigate()
 
   return (
     <>
       <MainLayout>
-        <OfferTripForm />
+        {!hasTrip && <OfferTripForm />}
+        <Outlet />
       </MainLayout>
       <ActionModal
         show={showModal}
