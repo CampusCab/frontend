@@ -1,6 +1,6 @@
 import './index.scss'
 import { useState } from 'react'
-import { HideIcon } from '../icon'
+import { HideIcon, ShowIcon } from '../icon'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string
@@ -33,7 +33,11 @@ const Input = (props: InputProps) => {
           placeholder={props.placeholder}
           onChange={(e) => props.onChange && props.onChange(e)}
         />
-        {props.type === 'password' && <HideIcon onClick={handleShowPassword} />}
+        {props.type === 'password' &&
+          <span onClick={handleShowPassword}>
+            {showPassword ? <ShowIcon style={{ width: '20px' }} /> : <HideIcon style={{ width: '20px' }} />}
+          </span>
+        }
       </div>
       {props.erroMessage && <p>{props.erroMessage}</p>}
     </div>

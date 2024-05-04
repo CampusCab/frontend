@@ -14,11 +14,33 @@ export const EmailIcon = ({ onClick, style }: IconProps) => {
   )
 }
 
+export const PhoneIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/src/assets/phone.svg'
+      alt='Phone icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
 export const HideIcon = ({ onClick, style }: IconProps) => {
   return (
     <img
       src='/src/assets/hide.svg'
       alt='Hide icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const ShowIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/src/assets/show.svg'
+      alt='Show icon'
       onClick={onClick}
       style={{ ...style }}
     />

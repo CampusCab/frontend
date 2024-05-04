@@ -3,7 +3,7 @@ import './index.scss'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { TRegisterForm } from '../../config/types/forms'
-import { EmailIcon, LockIcon } from '../../components/ui/icon'
+import { EmailIcon, LockIcon, PhoneIcon } from '../../components/ui/icon'
 import Input from '../../components/ui/input'
 import Button from '../../components/ui/button'
 
@@ -29,7 +29,7 @@ const RegisterForm = () => {
                 name='firstName'
                 placeholder='Nombre(s)'
                 type='text'
-                icon={<EmailIcon />}
+                icon={<EmailIcon style={{ width: '20px' }} />}
                 value={field.value}
                 erroMessage={fieldState.error?.message}
                 onChange={field.onChange}
@@ -60,7 +60,7 @@ const RegisterForm = () => {
                 name='email'
                 placeholder='Correo institucional'
                 type='email'
-                icon={<EmailIcon style={{}} />}
+                icon={<EmailIcon style={{ width: '20px' }} />}
                 value={field.value}
                 erroMessage={fieldState.error?.message}
                 onChange={field.onChange}
@@ -75,7 +75,7 @@ const RegisterForm = () => {
                 name='phone'
                 placeholder='Teléfono'
                 type='number'
-                icon={<EmailIcon style={{}} />}
+                icon={<PhoneIcon style={{ width: '20px' }} />}
                 value={String(field.value)}
                 erroMessage={fieldState.error?.message}
                 onChange={field.onChange}
@@ -92,7 +92,7 @@ const RegisterForm = () => {
                 name='password'
                 placeholder='Contraseña'
                 type='password'
-                icon={<LockIcon />}
+                icon={<LockIcon style={{ width: '20px' }} />}
                 value={field.value}
                 erroMessage={fieldState.error?.message}
                 onChange={field.onChange}
@@ -107,7 +107,7 @@ const RegisterForm = () => {
                 name='confirmPassword'
                 placeholder='Confirma tu contraseña'
                 type='password'
-                icon={<LockIcon />}
+                icon={<LockIcon style={{ width: '20px' }}/>}
                 value={field.value}
                 erroMessage={fieldState.error?.message}
                 onChange={field.onChange}

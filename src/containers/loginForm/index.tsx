@@ -25,7 +25,7 @@ const LoginForm = () => {
               name='email'
               placeholder='Correo institucional'
               type='email'
-              icon={<EmailIcon />}
+              icon={<EmailIcon style={{ width: '20px' }} />}
               value={field.value}
               erroMessage={fieldState.error?.message}
               onChange={field.onChange}
@@ -40,7 +40,7 @@ const LoginForm = () => {
               name='password'
               placeholder='Contraseña'
               type='password'
-              icon={<LockIcon />}
+              icon={<LockIcon style={{ width: '20px' }} />}
               value={field.value}
               erroMessage={fieldState.error?.message}
               onChange={field.onChange}
