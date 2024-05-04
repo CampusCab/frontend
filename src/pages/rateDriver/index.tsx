@@ -23,7 +23,7 @@ const RateDriverPage = () => {
       <section className='rate-driver'>
         <h2>Viaje terminado</h2>
         <div className='rate-driver__info'>
-          <img src='/src/assets/male-avatar.svg' alt='Male avatar' />
+          <img src='/assets/male-avatar.svg' alt='Male avatar' />
           <div>
             <p>Califica al conductor</p>
             <h3>Benito Martínez</h3>

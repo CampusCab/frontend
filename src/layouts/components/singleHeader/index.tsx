@@ -10,10 +10,10 @@ const SingleHeader = () => {
         pathname === '/register' ? '--register' : '--login'
       }`}
     >
-      <img src='/src/assets/logo.svg' alt='CampusCab logo' className='logo' />
+      <img src='/assets/logo.svg' alt='CampusCab logo' className='logo' />
       {pathname === '/register' && (
         <img
-          src='src/assets/banner.svg'
+          src='/assets/banner.svg'
           alt='CampusCab banner'
           className='banner'
         />

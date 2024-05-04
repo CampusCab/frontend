@@ -47,8 +47,8 @@ const tripsList: TripInfo[] = [
 ]
 
 const FindTripPage = () => {
-  const [trips, setTrips] = useState<TripInfo[]>(tripsList)
-  const [hasTrip, setHasTrip] = useState(false)
+  const [trips] = useState<TripInfo[]>(tripsList)
+  const [hasTrip] = useState(false)
 
   const [search, setSearch] = useState('')
   return (

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Passenger } from '../../config/types/trips'
 import PassengerCard from '../../components/passengerCard'
 

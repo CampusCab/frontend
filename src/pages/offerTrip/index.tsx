@@ -9,8 +9,8 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import OfferTripForm from '../../containers/offerTripForm'
 
 const OfferTripPage = () => {
-  const [showModal, setShowModal] = useState(false)
-  const [hasTrip, setHasTrip] = useState(false)
+  const [showModal] = useState(false)
+  const [hasTrip] = useState(false)
   const navigate = useNavigate()
 
   return (

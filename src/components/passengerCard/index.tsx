@@ -16,7 +16,7 @@ const PassengerCard = ({ item, hasActions, hasDelete }: PassengerCardProps) => {
     <Card>
       <div className='passenger-card' style={{ padding: '1rem 0' }}>
         <img
-          src={item.image ?? '/src/assets/male-avatar.svg'}
+          src={item.image ?? '/assets/male-avatar.svg'}
           alt='Passenger image'
         />
         <div className='passenger-card__body'>

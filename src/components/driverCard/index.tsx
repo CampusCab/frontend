@@ -25,7 +25,7 @@ const DriverCard = ({ item, children, onClick }: DriverCardProps) => {
           <div>
             <img
               className='driver-image'
-              src={item.driver.image ?? '/src/assets/male-avatar.svg'}
+              src={item.driver.image ?? '/assets/male-avatar.svg'}
               alt='CampusCab banner'
             />
             <div style={{ display: 'flex', gap: '0.5rem' }}>

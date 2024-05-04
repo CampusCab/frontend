@@ -1,5 +1,4 @@
 import './index.scss'
-import MainLayout from '../../layouts/main'
 import DriverCard from '../../components/driverCard'
 import { Passenger, TripInfo, Vehicle } from '../../config/types/trips'
 import VehicleCard from '../../components/vehicleCard'
