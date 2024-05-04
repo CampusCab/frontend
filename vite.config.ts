@@ -8,8 +8,9 @@ export default defineConfig({
     assetsDir: './assets',
     rollupOptions: {
       input: {
-        main: './index.html', // Punto de entrada principal de tu aplicación
+        main: './index.html',
       },
     },
   },
+  base: '/campuscab/'
 })
