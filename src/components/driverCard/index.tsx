@@ -21,12 +21,12 @@ const DriverCard = ({ item, children, onClick }: DriverCardProps) => {
   return (
     <Card onClick={onClick}>
       <>
-        <div className='trip'>
+        <div className='trip' style={{ padding: '1rem 0' }}>
           <div>
             <img
               className='driver-image'
               src={item.driver.image ?? '/src/assets/male-avatar.svg'}
-              alt='Campuscap banner'
+              alt='CampusCab banner'
             />
             <div style={{ display: 'flex', gap: '0.5rem' }}>
               <StarIconFilled style={{ width: '1rem' }} />{' '}

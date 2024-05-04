@@ -35,7 +35,7 @@ const TripCard = ({ item, success }: TripCardProps) => {
                 <CheckIcon style={{ margin: '1rem 0' }} />
                 <h4
                   style={{
-                    color: '#52C550',
+                    color: '#8EB826',
                     fontSize: '1.3rem',
                     fontWeight: 'bold'
                   }}
@@ -56,8 +56,8 @@ const TripCard = ({ item, success }: TripCardProps) => {
                 <Button
                   type='button'
                   variant='inverse'
-                  iconLeft={<SendIcon />}
-                  style={{ margin: '1rem 0' }}
+                  iconLeft={<SendIcon style={{ width: '20px' }} />}
+                  style={{ margin: '1rem 0', color: '#fff' }}
                 >
                   Enviar
                 </Button>

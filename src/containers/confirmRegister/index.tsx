@@ -53,7 +53,7 @@ const ConfirmRegister = () => {
           Regístrate
         </Button>
       </form>
-      <img src='/src/assets/banner.svg' alt='Campuscap banner' />
+      <img src='/src/assets/banner.svg' alt='CampusCab banner' />
     </section>
   )
 }

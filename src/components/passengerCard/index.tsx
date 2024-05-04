@@ -14,7 +14,7 @@ type PassengerCardProps = {
 const PassengerCard = ({ item, hasActions, hasDelete }: PassengerCardProps) => {
   return (
     <Card>
-      <div className='passenger-card'>
+      <div className='passenger-card' style={{ padding: '1rem 0' }}>
         <img
           src={item.image ?? '/src/assets/male-avatar.svg'}
           alt='Passenger image'

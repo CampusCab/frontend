@@ -12,7 +12,7 @@ type VehicleCardProps = {
 const VehicleCard = ({ item, onClick }: VehicleCardProps) => {
   return (
     <Card onClick={() => onClick && onClick(item)}>
-      <div className='vehicle-card'>
+      <div className='vehicle-card' style={{ padding: '1rem 0' }}>
         <img src={`/src/assets/${item.type}.svg`} alt='Vehicule image' />
         <div className='vehicle-card__body'>
           <h4>{item.id}</h4>

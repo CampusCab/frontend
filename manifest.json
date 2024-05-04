@@ -27,5 +27,49 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/screenshot-1.png",
+      "sizes": "430x932",
+      "type": "image/png",
+      "label": "Buscar viaje",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshots/screenshot-2.png",
+      "sizes": "430x932",
+      "type": "image/png",
+      "label": "Ofrecer viaje",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshots/screenshot-3.png",
+      "sizes": "430x932",
+      "type": "image/png",
+      "label": "Puntuar conductor",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshots/screenshot-1.png",
+      "sizes": "430x932",
+      "type": "image/png",
+      "label": "Buscar viaje",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshots/screenshot-2.png",
+      "sizes": "430x932",
+      "type": "image/png",
+      "label": "Ofrecer viaje",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshots/screenshot-3.png",
+      "sizes": "430x932",
+      "type": "image/png",
+      "label": "Puntuar conductor",
+      "form_factor": "wide"
+    }
   ]
 }
