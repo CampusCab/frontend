@@ -17,8 +17,8 @@ const tripsList: TripInfo[] = [
       lastName: 'Perez',
       stars: '4.5'
     },
-    origin: 'Bogotá',
-    destination: 'Medellín',
+    origin: 'Facultad de Minas',
+    destination: 'Estación Caribe',
     date: '2022-01-01',
     hour: '06:00',
     availableSeats: 3,
@@ -35,8 +35,8 @@ const tripsList: TripInfo[] = [
       lastName: 'Gomez',
       stars: '5.0'
     },
-    origin: 'Medellín',
-    destination: 'Bogotá',
+    origin: 'Parque de Bello',
+    destination: 'Campus Volador',
     date: '2022-01-01',
     hour: '06:00',
     availableSeats: 2,

@@ -26,11 +26,19 @@
     &__places {
       display: flex;
       gap: 0.5rem;
+      font-size: 14px;
       @include mobile-m {
-        font-size: 15px;
+        font-size: 14px;
       }
       @include mobile-s {
-        font-size: 12px;
+        font-size: 14px;
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        line-height: 16px;
       }
     }
 
