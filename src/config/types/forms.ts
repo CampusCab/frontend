@@ -11,13 +11,13 @@ export type TRegisterForm = UserInfo & {
   confirmPassword: string
 }
 
-export type TConfirmRegisterForm = {
-  char1: number
-  char2: number
-  char3: number
-  char4: number
-  char5: number
-  char6: number
+export type TVerifyRegisterForm = {
+  char1: string
+  char2: string
+  char3: string
+  char4: string
+  char5: string
+  char6: string
 }
 
 export type TOfferTrip = {

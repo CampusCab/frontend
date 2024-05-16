@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom'
 import Home from './home'
 import LoginPage from './login'
 import RegisterPage from './register'
-import ConfirmRegister from '../containers/confirmRegister'
+import VerifyRegister from '../containers/verifyRegister'
 import LoginLayout from '../layouts/login'
 import FindTripPage from './findTrip'
 import OfferTripPage from './offerTrip'
@@ -33,10 +33,10 @@ export const PAGES: Route[] = [
     exact: true,
     children: [
       {
-        path: ':id/confirm',
+        path: ':email/verify',
         element: (
           <LoginLayout>
-            <ConfirmRegister />
+            <VerifyRegister />
           </LoginLayout>
         ),
         exact: true

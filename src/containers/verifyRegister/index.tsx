@@ -1,24 +1,29 @@
 import './index.scss'
 
 import { Controller, useForm } from 'react-hook-form'
-import { useNavigate, useOutletContext, useParams } from 'react-router-dom'
-import { TConfirmRegisterForm } from '../../config/types/forms'
+import { useNavigate, useParams } from 'react-router-dom'
+import { TVerifyRegisterForm } from '../../config/types/forms'
 import Input from '../../components/ui/input'
 import Button from '../../components/ui/button'
-import { TRegisterContext } from '../../config/contexts/register'
+import useFetchMutation from '../../hooks/useFetchMutation'
+import { VERIFY_REGISTRATION_SERVICE } from '../../services/verify'
 
-const ConfirmRegister = () => {
-  const context = useOutletContext<TRegisterContext>()
-  const { control, handleSubmit, formState } = useForm<TConfirmRegisterForm>()
+const VerifyRegister = () => {
+  const { control, handleSubmit } = useForm<TVerifyRegisterForm>()
   const { email } = useParams()
   const navigate = useNavigate()
+  const { fetchService } = useFetchMutation({ ...VERIFY_REGISTRATION_SERVICE })
 
-  const handleOnSubmit = (data: TConfirmRegisterForm) => {
-    if (formState.isValid && email) {
-      const code = Object.values(data).join('')
-      context
-        .verify({ email: email, verification_code: code })
-        .finally(() => navigate('/'))
+  const handleOnSubmit = async (data: TVerifyRegisterForm) => {
+    if (email) {
+      const verification_code = Object.values(data).join('')
+      await fetchService({ verification_code, email }).then((response) => {
+        if (!response?.isError) {
+          navigate(`/`)
+        } else {
+          console.log(response)
+        }
+      })
     }
   }
   return (
@@ -35,15 +40,17 @@ const ConfirmRegister = () => {
             <Controller
               key={char}
               control={control}
-              name={`char${char}` as keyof TConfirmRegisterForm}
+              name={`char${char}` as keyof TVerifyRegisterForm}
+              defaultValue=''
               rules={{ required: 'Este campo es requerido' }}
               render={({ field, fieldState }) => (
                 <Input
                   name={`char${char}`}
-                  type='number'
+                  type='text'
                   value={String(field.value)}
                   erroMessage={fieldState.error?.message}
                   onChange={field.onChange}
+                  maxLength={1}
                 />
               )}
             />
@@ -58,4 +65,4 @@ const ConfirmRegister = () => {
   )
 }
 
-export default ConfirmRegister
+export default VerifyRegister

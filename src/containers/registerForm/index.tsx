@@ -16,7 +16,7 @@ const RegisterForm = () => {
 
   const handleOnSubmit = async (data: TRegisterForm) => {
     if (data.password === data.confirmPassword) {
-      await fetchService({ ...data, gender: 'M' }).then((response) => {
+      await fetchService({ ...data, gender: 'M' }).then((response) => { // Quitar genero
         if (!response?.isError) {
           navigate(`${data.email}/confirm`)
         } else {

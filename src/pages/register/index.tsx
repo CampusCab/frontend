@@ -3,11 +3,11 @@ import RegisterLayout from '../../layouts/register'
 import RegisterForm from '../../containers/registerForm'
 
 const RegisterPage = () => {
-  const { id } = useParams()
+  const { email } = useParams()
 
   return (
     <>
-      {!id && (
+      {!email && (
         <RegisterLayout>
           <h2>Registro</h2>
           <RegisterForm  />
