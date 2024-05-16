@@ -5,7 +5,7 @@ import { UseAuth } from '../../providers/auth'
 import { useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
-  const { isLogged } = UseAuth()
+  const { login ,isLogged } = UseAuth()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const LoginPage = () => {
   return (
     <>
       <LoginLayout>
-        <LoginForm />
+        <LoginForm login={login} />
       </LoginLayout>
     </>
   )

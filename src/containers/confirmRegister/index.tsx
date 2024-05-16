@@ -1,24 +1,24 @@
 import './index.scss'
 
 import { Controller, useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useOutletContext, useParams } from 'react-router-dom'
 import { TConfirmRegisterForm } from '../../config/types/forms'
 import Input from '../../components/ui/input'
 import Button from '../../components/ui/button'
+import { TRegisterContext } from '../../config/contexts/register'
 
 const ConfirmRegister = () => {
+  const context = useOutletContext<TRegisterContext>()
   const { control, handleSubmit, formState } = useForm<TConfirmRegisterForm>()
+  const { email } = useParams()
   const navigate = useNavigate()
 
-  const validateCode = (data: TConfirmRegisterForm) => {
-    const code = Object.values(data).join('')
-    return code === '123456'
-  }
-
   const handleOnSubmit = (data: TConfirmRegisterForm) => {
-    validateCode(data)
-    if (formState.isValid) {
-      navigate('/')
+    if (formState.isValid && email) {
+      const code = Object.values(data).join('')
+      context
+        .verify({ email: email, verification_code: code })
+        .finally(() => navigate('/'))
     }
   }
   return (

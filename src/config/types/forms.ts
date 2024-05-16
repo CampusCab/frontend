@@ -1,4 +1,5 @@
-import { Vehicle } from "./trips"
+import { Vehicle } from './trips'
+import { UserInfo } from './user'
 
 // Forms
 export type TLoginForm = {
@@ -6,12 +7,7 @@ export type TLoginForm = {
   password: string
 }
 
-export type TRegisterForm = {
-  firstName: string
-  lastName: string
-  email: string
-  phone: number
-  password: string
+export type TRegisterForm = UserInfo & {
   confirmPassword: string
 }
 
