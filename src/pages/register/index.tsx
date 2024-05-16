@@ -1,5 +1,3 @@
-import './index.scss'
-
 import { Outlet, useParams } from 'react-router-dom'
 import RegisterLayout from '../../layouts/register'
 import RegisterForm from '../../containers/registerForm'
@@ -11,7 +9,7 @@ const RegisterPage = () => {
     <>
       {!id && (
         <RegisterLayout>
-          <h1 className='title'>Registro</h1>
+          <h2>Registro</h2>
           <RegisterForm />
         </RegisterLayout>
       )}

@@ -1,11 +1,11 @@
 import './index.scss'
 
 import { Controller, useForm } from 'react-hook-form'
-import { Input } from '../../components/ui/input'
-import { Button } from '../../components/ui/button'
+import Input from '../../components/ui/input'
+import Button from '../../components/ui/button'
 import { EmailIcon, LockIcon } from '../../components/ui/icon'
 import { useNavigate } from 'react-router-dom'
-import { TLoginForm } from '../../config/types'
+import { TLoginForm } from '../../config/types/forms'
 
 const LoginForm = () => {
   const { control, handleSubmit } = useForm<TLoginForm>()
@@ -25,7 +25,7 @@ const LoginForm = () => {
               name='email'
               placeholder='Correo institucional'
               type='email'
-              icon={<EmailIcon />}
+              icon={<EmailIcon style={{ width: '20px' }} />}
               value={field.value}
               erroMessage={fieldState.error?.message}
               onChange={field.onChange}
@@ -40,20 +40,25 @@ const LoginForm = () => {
               name='password'
               placeholder='Contraseña'
               type='password'
-              icon={<LockIcon />}
+              icon={<LockIcon style={{ width: '20px' }} />}
               value={field.value}
               erroMessage={fieldState.error?.message}
               onChange={field.onChange}
             />
           )}
         />
-        <Button type='submit' variant='primary' className='submit-button' >
+        <Button type='submit' variant='primary' className='submit-button'>
           Iniciar sesión
         </Button>
       </form>
       <div className='register-area'>
         <p>¿Aún no estás registrado?</p>
-        <Button type='button' variant='secondary' className='register-button' onClick={()=>navigate('/register')}>
+        <Button
+          type='button'
+          variant='secondary'
+          className='register-button'
+          onClick={() => navigate('/register')}
+        >
           Regístrate
         </Button>
       </div>

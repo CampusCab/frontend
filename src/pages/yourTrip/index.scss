@@ -1,0 +1,16 @@
+@import 'src/styles/colors.scss';
+@import 'src/styles/responsive.scss';
+
+.your-trip{
+    margin: 0 2rem;
+    @include mobile-m{
+        margin: 0 1rem;
+    }
+
+    h2{
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    
+}

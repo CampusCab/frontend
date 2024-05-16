@@ -4,6 +4,10 @@ import LoginPage from './login'
 import RegisterPage from './register'
 import ConfirmRegister from '../containers/confirmRegister'
 import LoginLayout from '../layouts/login'
+import FindTripPage from './findTrip'
+import OfferTripPage from './offerTrip'
+import YourTripPage from './yourTrip'
+import RateDriverPage from './rateDriver'
 
 type Route = {
   path: string
@@ -38,5 +42,40 @@ export const PAGES: Route[] = [
         exact: true
       }
     ]
+  },
+  {
+    path: '/find-trip',
+    element: <FindTripPage />,
+    exact: true,
+    children: [
+      {
+        path: 'your-trip/:id',
+        element: <YourTripPage />,
+        exact: true
+      }
+    ]
+  },
+  {
+    path: '/offer-trip',
+    element: <OfferTripPage />,
+    exact: true,
+    children: [
+      {
+        path: 'your-trip/:id',
+        element: <YourTripPage />,
+        exact: true
+      }
+    ]
+  },
+
+  {
+    path: '/rate-driver/:id',
+    element: <RateDriverPage />,
+    exact: true
+  },
+  {
+    path: '*',
+    element: <div>404</div>,
+    exact: true
   }
 ]

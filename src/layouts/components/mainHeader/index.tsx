@@ -1,5 +1,13 @@
-export const MainHeader = () => {
+import { UserIcon } from '../../../components/ui/icon'
+import './index.scss'
+
+const MainHeader = () => {
   return (
-    <div>MainHeader</div>
+    <header className='main-header'>
+      <img src='/assets/logo.svg' alt='CampusCab logo' className='logo' />
+      <UserIcon style={{ width: '10%', cursor: 'pointer' }} />
+    </header>
   )
 }
+
+export default MainHeader

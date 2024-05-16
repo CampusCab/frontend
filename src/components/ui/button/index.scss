@@ -8,6 +8,14 @@ button {
   -o-border-radius: 5rem;
   width: fit-content;
   min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:disabled {
+    background-color: $inactive-color;
+    color: $inactive-text-color;
+  }
 }
 
 .primary {
@@ -24,5 +32,17 @@ button {
   border: 2px solid $primary-color;
   padding: 10px 30px;
   font-weight: bold;
+}
 
+.inverse {
+  background-color: $secondary-color;
+  color: $primary-color;
+  border: none;
+  padding: 10px 30px;
+  font-weight: bold;
+  min-width: 0;
+
+  > img {
+    margin-right: 10px;
+  }
 }

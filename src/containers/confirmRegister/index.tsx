@@ -2,9 +2,9 @@ import './index.scss'
 
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { TConfirmRegisterForm } from '../../config/types'
-import { Input } from '../../components/ui/input'
-import { Button } from '../../components/ui/button'
+import { TConfirmRegisterForm } from '../../config/types/forms'
+import Input from '../../components/ui/input'
+import Button from '../../components/ui/button'
 
 const ConfirmRegister = () => {
   const { control, handleSubmit, formState } = useForm<TConfirmRegisterForm>()
@@ -53,7 +53,7 @@ const ConfirmRegister = () => {
           Regístrate
         </Button>
       </form>
-      <img src='/src/assets/banner.svg' alt='Campuscap banner' />
+      <img src='/assets/banner.svg' alt='CampusCab banner' />
     </section>
   )
 }

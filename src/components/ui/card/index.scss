@@ -1,0 +1,18 @@
+@import 'src/styles/colors.scss';
+@import 'src/styles/responsive.scss';
+
+.card{
+    background-color: $aux-bg-color;
+    margin: 1rem 0;
+    padding: 0 1rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+
+    @include mobile-s{
+        padding: 0.5rem;
+    }
+    
+}
