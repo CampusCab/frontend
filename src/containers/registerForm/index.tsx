@@ -6,14 +6,23 @@ import { TRegisterForm } from '../../config/types/forms'
 import { EmailIcon, LockIcon, PhoneIcon } from '../../components/ui/icon'
 import Input from '../../components/ui/input'
 import Button from '../../components/ui/button'
+import { REGISTER_SERVICE } from '../../services/register'
+import useFetchMutation from '../../hooks/useFetchMutation'
 
 const RegisterForm = () => {
-  const { control, handleSubmit, formState } = useForm<TRegisterForm>()
+  const { fetchService } = useFetchMutation({ ...REGISTER_SERVICE })
+  const { control, handleSubmit } = useForm<TRegisterForm>()
   const navigate = useNavigate()
 
-  const handleOnSubmit = (data: TRegisterForm) => {
-    if (formState.isValid && data.password === data.confirmPassword) {
-      navigate('ID1/confirm')
+  const handleOnSubmit = async (data: TRegisterForm) => {
+    if (data.password === data.confirmPassword) {
+      await fetchService({ ...data, gender: 'M' }).then((response) => { // Quitar genero
+        if (!response?.isError) {
+          navigate(`${data.email}/confirm`)
+        } else {
+          console.log(response)
+        }
+      })
     }
   }
   return (
@@ -22,7 +31,7 @@ const RegisterForm = () => {
         <div className='register-form__row register-form__row--group'>
           <Controller
             control={control}
-            name='firstName'
+            name='first_name'
             rules={{ required: 'Este campo es requerido' }}
             render={({ field, fieldState }) => (
               <Input
@@ -38,7 +47,7 @@ const RegisterForm = () => {
           />
           <Controller
             control={control}
-            name='lastName'
+            name='last_name'
             render={({ field, fieldState }) => (
               <Input
                 name='lastName'
@@ -70,11 +79,12 @@ const RegisterForm = () => {
           <Controller
             control={control}
             name='phone'
+            defaultValue=''
             render={({ field, fieldState }) => (
               <Input
                 name='phone'
                 placeholder='Teléfono'
-                type='number'
+                type='tel'
                 icon={<PhoneIcon style={{ width: '20px' }} />}
                 value={String(field.value)}
                 erroMessage={fieldState.error?.message}
@@ -107,7 +117,7 @@ const RegisterForm = () => {
                 name='confirmPassword'
                 placeholder='Confirma tu contraseña'
                 type='password'
-                icon={<LockIcon style={{ width: '20px' }}/>}
+                icon={<LockIcon style={{ width: '20px' }} />}
                 value={field.value}
                 erroMessage={fieldState.error?.message}
                 onChange={field.onChange}

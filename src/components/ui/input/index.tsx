@@ -28,6 +28,7 @@ const Input = (props: InputProps) => {
       <div className='input__field'>
         {props.icon}
         <input
+          {...props}
           type={inputType}
           value={props.value}
           placeholder={props.placeholder}

@@ -7,19 +7,24 @@ import { EmailIcon, LockIcon } from '../../components/ui/icon'
 import { useNavigate } from 'react-router-dom'
 import { TLoginForm } from '../../config/types/forms'
 
-const LoginForm = () => {
+const LoginForm = ({ login }: { login: (data: TLoginForm) => void }) => {
   const { control, handleSubmit } = useForm<TLoginForm>()
   const navigate = useNavigate()
+
+  const onSubmit = (data: TLoginForm) => {
+    login(data)
+  }
 
   return (
     <section className='login-form'>
       <form
-        onSubmit={handleSubmit((data) => console.log(data))}
+        onSubmit={handleSubmit((data) => onSubmit(data))}
         className='login-form__fields'
       >
         <Controller
           control={control}
           name='email'
+          defaultValue=''
           render={({ field, fieldState }) => (
             <Input
               name='email'
@@ -35,6 +40,7 @@ const LoginForm = () => {
         <Controller
           control={control}
           name='password'
+          defaultValue=''
           render={({ field, fieldState }) => (
             <Input
               name='password'
