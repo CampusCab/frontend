@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useState } from 'react'
+import React, { ReactNode, createContext, useEffect, useState } from 'react'
 import { User } from '../config/types/user'
 
 type UserContextType = {
@@ -8,7 +8,7 @@ type UserContextType = {
 
 // Create the user context
 export const UserContext = createContext<UserContextType>({
-  userInfo: {} as User,
+  userInfo: { isLogged: false } as User,
   setUserInfo: () => {}
 })
 
@@ -18,6 +18,15 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
   children
 }) => {
   const [userInfo, setUserInfo] = useState<User>({} as User)
+
+  useEffect(() => {
+    const tokens = JSON.parse(localStorage.getItem('tokens') as string)
+    if (tokens) {
+      setUserInfo({ ...userInfo, isLogged: true })
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleSetUserInfo = (data: User) => {
     setUserInfo(data)

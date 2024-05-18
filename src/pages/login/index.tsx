@@ -12,7 +12,6 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (userInfo.isLogged) navigate('/')
-      console.log('isLogged', userInfo.isLogged)
   }, [navigate, userInfo.isLogged])
 
   return (

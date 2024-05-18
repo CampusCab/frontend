@@ -47,7 +47,10 @@ export const UseAuth = () => {
         }
       })
     },
-    logout: () => {},
+    logout: () => {
+      localStorage.removeItem('tokens')
+      setUserInfo({ ...userInfo, isLogged: false })
+    },
     getTokens: getTokens
   } as TAuth
 }

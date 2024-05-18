@@ -10,6 +10,7 @@ function Home() {
   const navigate = useNavigate()
 
   useEffect(() => {
+    console.log(userInfo.isLogged)
     if (!userInfo.isLogged) navigate('/login')
   }, [navigate, userInfo.isLogged])
 
