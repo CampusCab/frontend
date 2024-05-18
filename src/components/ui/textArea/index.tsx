@@ -7,7 +7,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   label?: string
   placeholder?: string
   value: string
-  erroMessage?: string
+  errorMessage?: string
   icon?: React.ReactNode
   variant?: 'rounded' | 'default'
 }
@@ -31,7 +31,7 @@ const TextArea = (props: InputProps) => {
         />
         {props.type === 'password' && <HideIcon onClick={handleShowPassword} />}
       </div>
-      {props.erroMessage && <p>{props.erroMessage}</p>}
+      {props.errorMessage && <p>{props.errorMessage}</p>}
     </div>
   )
 }

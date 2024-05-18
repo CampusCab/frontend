@@ -1,8 +1,9 @@
 import useFetchMutation from './useFetchMutation'
 import { LOGIN_SERVICE } from '../services/login'
 import { TLoginForm } from '../config/types/forms'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { UserContext } from '../providers/userContext'
+import { User } from '../config/types/user'
 
 type TAuth = {
   logout: () => void
@@ -13,6 +14,16 @@ type TAuth = {
 export const UseAuth = () => {
   const { fetchService } = useFetchMutation({ ...LOGIN_SERVICE })
   const { setUserInfo, userInfo } = useContext(UserContext)
+
+  useEffect(() => {
+    const tokens = getTokens()
+    const user = localStorage.getItem('user')
+    if (tokens.access_token && user) {
+      setUserInfo({ ...(JSON.parse(user) as User), isLogged: true })
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const getTokens = () => {
     const tokens = JSON.parse(localStorage.getItem('tokens') as string)
@@ -34,7 +45,11 @@ export const UseAuth = () => {
       'tokens',
       JSON.stringify({ access_token, refresh_token })
     )
-    setUserInfo({ ...userInfo, isLogged: true })
+  }
+
+  const setUserData = (data: User) => {
+    setUserInfo({ ...data, isLogged: true })
+    localStorage.setItem('user', JSON.stringify(data))
   }
 
   return {
@@ -42,6 +57,7 @@ export const UseAuth = () => {
       fetchService(data).then((response) => {
         if (!response?.isError) {
           setTokens(response.tokens.access_token, response.tokens.access_token)
+          setUserData(response.user)
         } else {
           console.log(response)
         }
@@ -49,6 +65,7 @@ export const UseAuth = () => {
     },
     logout: () => {
       localStorage.removeItem('tokens')
+      localStorage.removeItem('user')
       setUserInfo({ ...userInfo, isLogged: false })
     },
     getTokens: getTokens

@@ -48,7 +48,7 @@ const VerifyRegister = () => {
                   name={`char${char}`}
                   type='text'
                   value={String(field.value)}
-                  erroMessage={fieldState.error?.message}
+                  errorMessage={fieldState.error?.message}
                   onChange={field.onChange}
                   maxLength={1}
                 />

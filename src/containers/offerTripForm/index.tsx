@@ -102,7 +102,7 @@ const OfferTripForm = () => {
               type='text'
               variant='rounded'
               value={field.value}
-              erroMessage={fieldState.error?.message}
+              errorMessage={fieldState.error?.message}
               placeholder='Ingresa la hora de inicio'
             />
           </div>
@@ -118,7 +118,7 @@ const OfferTripForm = () => {
               value={field.value}
               variant='rounded'
               label='Ingresa indicaciones extra (Opcional):'
-              erroMessage={fieldState.error?.message}
+              errorMessage={fieldState.error?.message}
               placeholder='Descripcion...'
             />
           </div>

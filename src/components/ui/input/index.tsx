@@ -8,7 +8,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string
   value: string
   type: string
-  erroMessage?: string
+  errorMessage?: string
   icon?: React.ReactNode
   variant?: 'rounded' | 'default'
 }
@@ -34,13 +34,17 @@ const Input = (props: InputProps) => {
           placeholder={props.placeholder}
           onChange={(e) => props.onChange && props.onChange(e)}
         />
-        {props.type === 'password' &&
+        {props.type === 'password' && (
           <span onClick={handleShowPassword}>
-            {showPassword ? <ShowIcon style={{ width: '20px' }} /> : <HideIcon style={{ width: '20px' }} />}
+            {showPassword ? (
+              <ShowIcon style={{ width: '20px' }} />
+            ) : (
+              <HideIcon style={{ width: '20px' }} />
+            )}
           </span>
-        }
+        )}
       </div>
-      {props.erroMessage && <p>{props.erroMessage}</p>}
+      {props.errorMessage && <p>{props.errorMessage}</p>}
     </div>
   )
 }

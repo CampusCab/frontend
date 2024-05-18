@@ -32,7 +32,7 @@ const LoginForm = ({ login }: { login: (data: TLoginForm) => void }) => {
               type='email'
               icon={<EmailIcon style={{ width: '20px' }} />}
               value={field.value}
-              erroMessage={fieldState.error?.message}
+              errorMessage={fieldState.error?.message}
               onChange={field.onChange}
             />
           )}
@@ -48,7 +48,7 @@ const LoginForm = ({ login }: { login: (data: TLoginForm) => void }) => {
               type='password'
               icon={<LockIcon style={{ width: '20px' }} />}
               value={field.value}
-              erroMessage={fieldState.error?.message}
+              errorMessage={fieldState.error?.message}
               onChange={field.onChange}
             />
           )}
