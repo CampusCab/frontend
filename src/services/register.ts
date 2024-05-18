@@ -1,8 +1,8 @@
 import env from "../../env";
 import { FetchServiceParams } from "../config/types/services";
-import { UserInfo } from "../config/types/user";
+import { RegisterInfo } from "../config/types/user";
 
-export type ServiceBody = UserInfo
+export type ServiceBody = RegisterInfo
 
 export type ServiceResponse = {
     message: string

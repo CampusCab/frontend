@@ -7,11 +7,7 @@ import { EmailIcon, LockIcon } from '../../components/ui/icon'
 import { useNavigate } from 'react-router-dom'
 import { TLoginForm } from '../../config/types/forms'
 
-type TProps = {
-  login: (data: TLoginForm) => void
-}
-
-const LoginForm = ({ login }: TProps) => {
+const LoginForm = ({ login }: { login: (data: TLoginForm) => void }) => {
   const { control, handleSubmit } = useForm<TLoginForm>()
   const navigate = useNavigate()
 

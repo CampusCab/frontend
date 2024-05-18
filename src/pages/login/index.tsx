@@ -1,16 +1,19 @@
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import LoginForm from '../../containers/loginForm'
 import LoginLayout from '../../layouts/login'
-import { UseAuth } from '../../providers/auth'
+import { UseAuth } from '../../hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../../providers/userContext'
 
 const LoginPage = () => {
-  const { login ,isLogged } = UseAuth()
+  const { login } = UseAuth()
+  const { userInfo } = useContext(UserContext)
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (isLogged) navigate('/')
-  }, [isLogged, navigate])
+    if (userInfo.isLogged) navigate('/')
+      console.log('isLogged', userInfo.isLogged)
+  }, [navigate, userInfo.isLogged])
 
   return (
     <>

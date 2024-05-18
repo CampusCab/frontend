@@ -1,17 +1,17 @@
 import './index.scss'
 
 import MainLayout from '../../layouts/main'
-import { UseAuth } from '../../providers/auth'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
+import { UserContext } from '../../providers/userContext'
 
 function Home() {
-  const { isLogged } = UseAuth()
+  const { userInfo } = useContext(UserContext)
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!isLogged) navigate('/login', { replace: true })
-  }, [isLogged, navigate])
+    if (!userInfo.isLogged) navigate('/login')
+  }, [navigate, userInfo.isLogged])
 
   return (
     <>
