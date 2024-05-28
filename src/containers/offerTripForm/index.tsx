@@ -12,25 +12,9 @@ import {
 import Input from '../../components/ui/input'
 import TextArea from '../../components/ui/textArea'
 import Button from '../../components/ui/button'
-
-const vehicles: Vehicle[] = [
-  {
-    id: 'ABC - 123',
-    brand: 'Toyota',
-    model: 'Corolla',
-    seats: 4,
-    type: 'car',
-    year: 2018
-  },
-  {
-    id: 'DEF - 45A',
-    brand: 'Honda',
-    model: 'CB 190R',
-    seats: 1,
-    type: 'bike',
-    year: 2020
-  }
-]
+import useFetch from '../../hooks/useFetch'
+import { MY_VEHICLES_SERVICE } from '../../services/vehicles/myVehicles'
+import { UseAuth } from '../../hooks/useAuth'
 
 const options = ['Option 1', 'Option 2', 'Option 3']
 
@@ -38,6 +22,13 @@ const OfferTripForm = () => {
   const [hasSelection, setHasSelection] = useState(false)
   const [showDetails, setShowDetails] = useState(false)
   const form = useForm<TOfferTrip>()
+  const { getTokens } = UseAuth()
+  const { response, isLoading } = useFetch({
+    ...MY_VEHICLES_SERVICE,
+    headers: {
+      Authorization: `Bearer ${getTokens()?.access_token}`
+    }
+  })
 
   const handleSelectVehicle = (vehicle: Vehicle) => {
     form.setValue('vehicle', vehicle)
@@ -52,9 +43,9 @@ const OfferTripForm = () => {
     form.setValue(field, value)
   }
 
-  const renderVehicleList = (
+  const renderVehicleList = !isLoading && (
     <VehicleCardList
-      data={vehicles}
+      data={response.vehicles}
       onClick={(vehicle) => handleSelectVehicle(vehicle)}
       hasSelection={hasSelection}
       onContinue={handleContinue}

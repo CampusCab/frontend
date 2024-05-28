@@ -17,13 +17,10 @@ export interface Driver {
 }
 
 export interface Vehicle {
-  id: string
+  license: string
   type: 'car' | 'bike'
-  brand: string
   model: string
-  year: number
-  seats: number
-  image?: string
+  max_passengers: number
 }
 
 export interface TripInfo {
