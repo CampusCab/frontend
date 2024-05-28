@@ -32,7 +32,6 @@ export interface TripInfo {
   origin: string
   destination: string
   date: string
-  hour: string
   availableSeats: number
   maxSeats: number
   description?: string

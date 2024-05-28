@@ -21,6 +21,7 @@ const useFetch = <
   const [response, setResponse] = useState<R>(undefined as unknown as R)
 
   useEffect(() => {
+    console.log('useFetch')
     const fetchService = async () => {
       try {
         const response = await fetch(url, {
