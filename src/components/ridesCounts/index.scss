@@ -1,0 +1,58 @@
+@import '/src/styles/colors.scss';
+
+.rides-card {
+  padding: 1rem 0;
+
+  .rides-counts {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+    &__info {
+      > div {
+        display: flex;
+        gap: 8px;
+      }
+    }
+  }
+
+  .rides-amounts {
+    &__money {
+      display: flex;
+      background-color: $secondary-color;
+      color: $main-bg-color;
+      padding: 1rem 2rem;
+      margin: 1rem 0;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border-radius: 25px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      -ms-border-radius: 25px;
+      -o-border-radius: 25px;
+
+      > img {
+        margin-right: 15px;
+      }
+    }
+
+    &__commissions {
+      display: flex;
+      background-color: $warning-color;
+      color: $main-bg-color;
+      padding: 1rem 2rem;
+      margin: 1rem 0;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border-radius: 25px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      -ms-border-radius: 25px;
+      -o-border-radius: 25px;
+
+      > img {
+        margin-right: 15px;
+      }
+    }
+  }
+}

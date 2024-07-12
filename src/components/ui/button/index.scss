@@ -1,4 +1,4 @@
-@import 'src/styles/colors.scss';
+@import '/src/styles/colors.scss';
 
 button {
   border-radius: 5rem;
@@ -19,7 +19,7 @@ button {
 }
 
 .primary {
-  background-color: $primary-color;
+  background-color: $secondary-color;
   color: white;
   border: none;
   padding: 10px 30px;
@@ -28,15 +28,15 @@ button {
 
 .secondary {
   background-color: transparent;
-  color: $primary-color;
-  border: 2px solid $primary-color;
+  color: $main-bg-color;
+  border: 2px solid $main-bg-color;
   padding: 10px 30px;
   font-weight: bold;
 }
 
 .inverse {
-  background-color: $secondary-color;
-  color: $primary-color;
+  background-color: $main-bg-color;
+  color: $secondary-color;
   border: none;
   padding: 10px 30px;
   font-weight: bold;
@@ -45,4 +45,12 @@ button {
   > img {
     margin-right: 10px;
   }
+}
+
+.warning {
+  background-color: $warning-color;
+  color: $main-bg-color;
+  border: 2px solid $main-bg-color;
+  padding: 10px 30px;
+  font-weight: bold;
 }

@@ -4,6 +4,7 @@ import { TLoginForm } from '../config/types/forms'
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../providers/userContext'
 import { User } from '../config/types/user'
+import { useNavigate } from 'react-router-dom'
 
 type TAuth = {
   logout: () => void
@@ -14,6 +15,7 @@ type TAuth = {
 export const UseAuth = () => {
   const { fetchService } = useFetchMutation({ ...LOGIN_SERVICE })
   const { setUserInfo, userInfo } = useContext(UserContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const tokens = getTokens()
@@ -67,6 +69,7 @@ export const UseAuth = () => {
       localStorage.removeItem('tokens')
       localStorage.removeItem('user')
       setUserInfo({ ...userInfo, isLogged: false })
+      navigate('/login')
     },
     getTokens: getTokens
   } as TAuth

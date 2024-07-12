@@ -1,0 +1,10 @@
+.profile-card {
+  display: flex;
+  align-items: center;
+  .details {
+    &__row {
+      display: flex;
+      gap: 8px;
+    }
+  }
+}

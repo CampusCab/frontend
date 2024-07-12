@@ -56,7 +56,7 @@ const VerifyRegister = () => {
             />
           ))}
         </div>
-        <Button type='submit' variant='secondary' className='submit-button'>
+        <Button type='submit' variant='inverse' className='submit-button'>
           Regístrate
         </Button>
       </form>

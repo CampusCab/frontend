@@ -5,12 +5,11 @@ import { useNavigate } from 'react-router-dom'
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../../providers/userContext'
 
-function Home() {
+const Home = () => {
   const { userInfo } = useContext(UserContext)
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log(userInfo.isLogged)
     if (!userInfo.isLogged) navigate('/login')
   }, [navigate, userInfo.isLogged])
 

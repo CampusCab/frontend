@@ -8,6 +8,7 @@ import FindTripPage from './findTrip'
 import OfferTripPage from './offerTrip'
 import YourTripPage from './yourTrip'
 import RateDriverPage from './rateDriver'
+import Profile from './profile'
 
 type Route = {
   path: string
@@ -67,10 +68,14 @@ export const PAGES: Route[] = [
       }
     ]
   },
-
   {
     path: '/rate-driver/:id',
     element: <RateDriverPage />,
+    exact: true
+  },
+  {
+    path: '/profile',
+    element: <Profile />,
     exact: true
   },
   {

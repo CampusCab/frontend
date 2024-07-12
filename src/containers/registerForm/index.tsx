@@ -131,7 +131,7 @@ const RegisterForm = () => {
           </Button>
           <Button
             type='button'
-            variant='secondary'
+            variant='warning'
             className='cancel-button'
             onClick={() => navigate('/login')}
           >

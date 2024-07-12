@@ -39,3 +39,5 @@ export interface PaymentOffer {
   trip: TripInfo
   ammount: number
 }
+
+

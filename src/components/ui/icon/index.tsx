@@ -1,4 +1,4 @@
-type IconProps = {
+export type IconProps = {
   onClick?: () => void
   style?: React.CSSProperties
 }
@@ -117,6 +117,17 @@ export const MoneyBagBlueIcon = ({ onClick, style }: IconProps) => {
   return (
     <img
       src='/assets/money-bag-blue.svg'
+      alt='Money bag blue icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const MoneyBagWhiteIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/assets/money-bag-white.svg'
       alt='Money bag blue icon'
       onClick={onClick}
       style={{ ...style }}
@@ -288,3 +299,49 @@ export const MinusIcon = ({ onClick, style }: IconProps) => {
     />
   )
 }
+
+export const EditIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/assets/edit.svg'
+      alt='Edit icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const DriverIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/assets/driver.svg'
+      alt='Driver icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const CommentsIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/assets/comments.svg'
+      alt='Comments icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const CommissionIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/assets/commission.svg'
+      alt='Comments icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+

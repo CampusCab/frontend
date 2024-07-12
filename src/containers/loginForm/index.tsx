@@ -53,7 +53,7 @@ const LoginForm = ({ login }: { login: (data: TLoginForm) => void }) => {
             />
           )}
         />
-        <Button type='submit' variant='primary' className='submit-button'>
+        <Button type='submit' variant='inverse' className='submit-button'>
           Iniciar sesión
         </Button>
       </form>

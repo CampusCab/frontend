@@ -1,3 +1,5 @@
+import { Vehicle } from "./trips"
+
 export type RegisterInfo = {
   email: string
   phone: string
@@ -32,4 +34,28 @@ export type Tokens = {
 
 export type User = UserInfo & Tokens & {
   isLogged: boolean
+}
+
+export interface Profile {
+  image?: string
+  name: string
+  phone: string
+  email: string
+  carsRegistered: Vehicle[]
+  trips: {
+    asDriver: {
+      amount: number
+      stars: number
+      comments: string[]
+    }
+    asPassenger: { 
+      amount: number
+      stars: number 
+      comments: string[]
+    }
+  }
+  amounts: {
+    money: number
+    commissions: number
+  }
 }

@@ -3,7 +3,6 @@ import './index.scss'
 import React from 'react'
 import Card from '../ui/card'
 import {
-  ClockIcon,
   DestinationIcon,
   OriginIcon,
   PeopleIcon,
@@ -43,7 +42,6 @@ const DriverCard = ({ item, children, onClick }: DriverCardProps) => {
               <span> <DestinationIcon style={{ width: '24px' }} /> {item.destination} </span>
             </div>
             <div className='details__hour'>
-              <ClockIcon style={{ width: '20px' }} /> <p>{item.hour}</p> -
               <PeopleIcon style={{ width: '20px' }} />
               <p>
                 {item.availableSeats}/{item.maxSeats} Pasajeros
