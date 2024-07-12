@@ -311,6 +311,17 @@ export const EditIcon = ({ onClick, style }: IconProps) => {
   )
 }
 
+export const SaveIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/assets/save.svg'
+      alt='Edit icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
 export const DriverIcon = ({ onClick, style }: IconProps) => {
   return (
     <img
@@ -337,11 +348,31 @@ export const CommissionIcon = ({ onClick, style }: IconProps) => {
   return (
     <img
       src='/assets/commission.svg'
-      alt='Comments icon'
+      alt='Commission icon'
       onClick={onClick}
       style={{ ...style }}
     />
   )
 }
 
+export const UserFillIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/assets/customer.svg'
+      alt='User icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
 
+export const LicenceIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/assets/licence.svg'
+      alt='User icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}

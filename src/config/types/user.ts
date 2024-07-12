@@ -38,7 +38,8 @@ export type User = UserInfo & Tokens & {
 
 export interface Profile {
   image?: string
-  name: string
+  firstName: string
+  lastName: string
   phone: string
   email: string
   carsRegistered: Vehicle[]

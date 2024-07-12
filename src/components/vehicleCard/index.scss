@@ -1,5 +1,6 @@
 .vehicle-card {
   display: flex;
+  align-items: center;
 
   > img {
     padding-right: 10px;
@@ -12,6 +13,9 @@
     > img {
       width: 1rem;
       margin-right: 10px;
+    }
+    >p{
+      font-size: 0.8rem;
     }
   }
 }

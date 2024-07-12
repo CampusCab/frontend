@@ -28,3 +28,11 @@ export type TOfferTrip = {
   hour: string
   description: string
 }
+
+export type TEditProfile = {
+  firstName: string
+  lastName: string
+  phone: string
+  password: string
+  confirmPassword: string
+}

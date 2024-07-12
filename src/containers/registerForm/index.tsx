@@ -3,7 +3,12 @@ import './index.scss'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { TRegisterForm } from '../../config/types/forms'
-import { EmailIcon, LockIcon, PhoneIcon } from '../../components/ui/icon'
+import {
+  EmailIcon,
+  LockIcon,
+  PhoneIcon,
+  UserFillIcon
+} from '../../components/ui/icon'
 import Input from '../../components/ui/input'
 import Button from '../../components/ui/button'
 import { REGISTER_SERVICE } from '../../services/register'
@@ -16,7 +21,8 @@ const RegisterForm = () => {
 
   const handleOnSubmit = async (data: TRegisterForm) => {
     if (data.password === data.confirmPassword) {
-      await fetchService({ ...data, gender: 'M' }).then((response) => { // Quitar genero
+      await fetchService({ ...data, gender: 'M' }).then((response) => {
+        // Quitar genero
         if (!response?.isError) {
           navigate(`${data.email}/confirm`)
         } else {
@@ -38,7 +44,7 @@ const RegisterForm = () => {
                 name='firstName'
                 placeholder='Nombre(s)'
                 type='text'
-                icon={<EmailIcon style={{ width: '20px' }} />}
+                icon={<UserFillIcon style={{ width: '20px' }} />}
                 value={field.value}
                 errorMessage={fieldState.error?.message}
                 onChange={field.onChange}
