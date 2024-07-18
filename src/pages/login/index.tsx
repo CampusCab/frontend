@@ -4,9 +4,10 @@ import LoginLayout from '../../layouts/login'
 import { UseAuth } from '../../hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../providers/userContext'
+import Loader from '../../components/ui/loader'
 
 const LoginPage = () => {
-  const { login } = UseAuth()
+  const { login, isLoading } = UseAuth()
   const { userInfo } = useContext(UserContext)
   const navigate = useNavigate()
 
@@ -19,6 +20,7 @@ const LoginPage = () => {
       <LoginLayout>
         <LoginForm login={login} />
       </LoginLayout>
+      {isLoading && <Loader />}
     </>
   )
 }

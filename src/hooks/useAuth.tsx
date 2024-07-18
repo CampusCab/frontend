@@ -11,13 +11,14 @@ type TAuth = {
   logout: () => void
   login: (data: TLoginForm) => void
   getTokens: () => { access_token: string; refresh_token: string }
+  isLoading: boolean
 }
 
 export const UseAuth = () => {
-  const { fetchService } = useFetchMutation({ ...LOGIN_SERVICE })
+  const { fetchService, isLoading } = useFetchMutation({ ...LOGIN_SERVICE })
   const { setUserInfo, userInfo } = useContext(UserContext)
   const navigate = useNavigate()
-  const {addPopUp} = usePopUp()
+  const { addPopUp } = usePopUp()
 
   useEffect(() => {
     const tokens = getTokens()
@@ -74,6 +75,7 @@ export const UseAuth = () => {
       setUserInfo({ ...userInfo, isLogged: false })
       navigate('/login')
     },
-    getTokens: getTokens
+    getTokens: getTokens,
+    isLoading
   } as TAuth
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   FetchServiceParams,
   ServiceBody,
@@ -14,8 +15,10 @@ const useFetchMutation = <
   method,
   headers
 }: FetchServiceParams<B, R>) => {
+  const [isLoading, setIsLoading] = useState(false)
   const fetchService = async (body: B) => {
     try {
+      setIsLoading(true)
       const response = await fetch(url, {
         method: method,
         headers: headers || {
@@ -24,6 +27,7 @@ const useFetchMutation = <
         body: JSON.stringify(body)
       })
       if (!response.ok) {
+        setIsLoading(false)
         return {
           isError: true,
           type: 'service',
@@ -33,8 +37,10 @@ const useFetchMutation = <
       }
 
       const json = await response.json()
+      setIsLoading(false)
       return json
     } catch (error) {
+      setIsLoading(false)
       return {
         type: 'service',
         status: 500,
@@ -43,7 +49,7 @@ const useFetchMutation = <
       } as E
     }
   }
-  return { fetchService }
+  return { fetchService, isLoading }
 }
 
 export default useFetchMutation
