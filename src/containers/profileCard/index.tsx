@@ -1,6 +1,12 @@
 import { Profile } from '../../config/types/user'
 import Card from '../../components/ui/card'
-import { CarIcon, EmailIcon, PhoneIcon } from '../../components/ui/icon'
+import {
+  AddIcon,
+  CarIcon,
+  CarWhiteIcon,
+  EmailIcon,
+  PhoneIcon
+} from '../../components/ui/icon'
 
 import './index.scss'
 
@@ -9,6 +15,7 @@ import VehicleCard from '../../components/vehicleCard'
 import { Vehicle } from '../../config/types/trips'
 import { useState } from 'react'
 import EditVehicleForm from '../../components/editVehicleForm'
+import Button from '../../components/ui/button'
 
 export type ProfileCardProps = {
   user: Profile
@@ -18,16 +25,26 @@ export type ProfileCardProps = {
 const ProfileCard = ({ user, isEditing }: ProfileCardProps) => {
   const [editingVehicle, setEditingVehicle] = useState<Vehicle>({} as Vehicle)
   const [isEditingVehicle, setIsEditingVehicle] = useState('')
+  const [addingVehicle, setAddingVehicle] = useState(false)
 
   const handleEditVehicle = (vehicle: Vehicle) => {
     if (isEditingVehicle) {
-      // Save
-      setEditingVehicle({} as Vehicle)
-      setIsEditingVehicle('')
+      if (vehicle.license !== isEditingVehicle) {
+        setEditingVehicle(vehicle)
+        setIsEditingVehicle(vehicle.license)
+      } else {
+        // Save
+        setEditingVehicle({} as Vehicle)
+        setIsEditingVehicle('')
+      }
     } else {
       setEditingVehicle(vehicle)
       setIsEditingVehicle(vehicle.license)
     }
+  }
+
+  const handleAddVehicle = () => {
+    setAddingVehicle(!addingVehicle)
   }
 
   return (
@@ -76,10 +93,24 @@ const ProfileCard = ({ user, isEditing }: ProfileCardProps) => {
                     licence={editingVehicle.license}
                     max_passengers={editingVehicle.max_passengers}
                     model={editingVehicle.model}
+                    handleCancel={() => handleEditVehicle({} as Vehicle)}
                   />
                 )}
               </>
             ))}
+            <Button
+              type='button'
+              variant='primary'
+              className='add-vehicle__button'
+              iconLeft={<CarWhiteIcon />}
+              iconRight={<AddIcon />}
+              onClick={() => handleAddVehicle()}
+            >
+              {!addingVehicle ? 'Agregar nuevo vehículo' : 'Guardar vehículo'}
+            </Button>
+            {addingVehicle && (
+              <EditVehicleForm handleCancel={() => setAddingVehicle(false)} />
+            )}
           </>
         )}
       </div>

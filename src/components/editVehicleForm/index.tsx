@@ -3,14 +3,16 @@ import { Controller, useForm } from 'react-hook-form'
 import Input from '../ui/input'
 import { InfoIcon, LicenceIcon, PeopleIcon } from '../ui/icon'
 import './index.scss'
+import Button from '../ui/button'
 
 export type TProps = {
-  licence: string
-  model: string
-  max_passengers: number
+  licence?: string
+  model?: string
+  max_passengers?: number
+  handleCancel: () => void
 }
 
-const EditVehicleForm = ({ licence, max_passengers, model }: TProps) => {
+const EditVehicleForm = ({ licence, max_passengers, model, handleCancel }: TProps) => {
   const { control, handleSubmit } = useForm<Vehicle>()
 
   return (
@@ -34,7 +36,7 @@ const EditVehicleForm = ({ licence, max_passengers, model }: TProps) => {
         />
       </div>
       <div className='form__row'>
-      <Controller
+        <Controller
           control={control}
           name='model'
           defaultValue={model}
@@ -69,6 +71,9 @@ const EditVehicleForm = ({ licence, max_passengers, model }: TProps) => {
           )}
         />
       </div>
+      <Button className='cancel-button' type='button' variant='primary' onClick={()=> handleCancel()}>
+        Cancelar
+      </Button>
     </form>
   )
 }

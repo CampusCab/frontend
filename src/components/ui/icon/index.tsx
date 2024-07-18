@@ -69,6 +69,17 @@ export const CarIcon = ({ onClick, style }: IconProps) => {
   )
 }
 
+export const CarWhiteIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/assets/car-white.svg'
+      alt='Car icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
 export const RideIcon = ({ onClick, style }: IconProps) => {
   return (
     <img
@@ -371,6 +382,17 @@ export const LicenceIcon = ({ onClick, style }: IconProps) => {
     <img
       src='/assets/licence.svg'
       alt='User icon'
+      onClick={onClick}
+      style={{ ...style }}
+    />
+  )
+}
+
+export const AddIcon = ({ onClick, style }: IconProps) => {
+  return (
+    <img
+      src='/assets/add.svg'
+      alt='add icon'
       onClick={onClick}
       style={{ ...style }}
     />
