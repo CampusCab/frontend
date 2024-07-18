@@ -1,0 +1,110 @@
+@import '../../../styles/colors.scss';
+
+#toast-container {
+  z-index: 100;
+  position: fixed;
+  top: 1.5em;
+  margin: 0 10px;
+
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.6em;
+
+  max-width: 410px;
+}
+
+.toast {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  min-height: 4em;
+  padding: 1em;
+  background-color: $main-bg-color;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -ms-border-radius: 0.5em;
+  -o-border-radius: 0.5em;
+  animation: fadeinout 5s linear forwards;
+  -webkit-animation: fadeinout 5s linear forwards;
+  p: {
+    width: 100%;
+
+    font-size: 1em;
+  }
+
+  .icon {
+    align-self: flex-start;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 3em;
+    min-width: 3em;
+    border-radius: 50%;
+  }
+
+  @keyframes fadeinout {
+    0%,
+    100% {
+      opacity: 0;
+      top: calc(-50vh);
+    }
+    5%,
+    95% {
+      opacity: 1;
+      top: 0;
+    }
+  }
+}
+
+.toast[data-type='info'] {
+  color: $info-color;
+  border-top: 4px solid $info-color;
+
+  .icon {
+    background-color: $info-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%232d6b9c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>');
+  }
+}
+
+.toast[data-type='success'] {
+  color: var(--tt-color-success-text);
+  border-top: 0.3em solid var(--tt-color-success-border);
+
+  .icon {
+    background-color: var(--tt-color-success-icon-bg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23568312" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>');
+  }
+}
+
+.toast[data-type='warn'] {
+  color: var(--tt-color-warn-text);
+  border-top: 4px solid var(--tt-color-warn-border);
+
+  .icon {
+    background-color: var(--tt-color-warn-icon-bg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23957d27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>');
+  }
+}
+
+.toast[data-type='danger'] {
+  color: white;
+  border-top: 4px solid $danger-color;
+
+  .icon {
+    background-color: $danger-bg-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23cb382b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>');
+  }
+}

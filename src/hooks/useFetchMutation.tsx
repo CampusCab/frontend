@@ -28,7 +28,7 @@ const useFetchMutation = <
           isError: true,
           type: 'service',
           status: response.status,
-          message: 'Error in service'
+          message: response.statusText // TODO: Solve this message from backend
         } as E
       }
 

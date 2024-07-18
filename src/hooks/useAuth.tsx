@@ -5,6 +5,7 @@ import { useContext, useEffect } from 'react'
 import { UserContext } from '../providers/userContext'
 import { User } from '../config/types/user'
 import { useNavigate } from 'react-router-dom'
+import { usePopUp } from '../components/ui/popUp'
 
 type TAuth = {
   logout: () => void
@@ -16,6 +17,7 @@ export const UseAuth = () => {
   const { fetchService } = useFetchMutation({ ...LOGIN_SERVICE })
   const { setUserInfo, userInfo } = useContext(UserContext)
   const navigate = useNavigate()
+  const {addPopUp} = usePopUp()
 
   useEffect(() => {
     const tokens = getTokens()
@@ -62,6 +64,7 @@ export const UseAuth = () => {
           setUserData(response.user)
         } else {
           console.log(response)
+          addPopUp('danger', 'Usuario o contraseña incorrectos')
         }
       })
     },
