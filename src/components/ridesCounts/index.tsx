@@ -1,8 +1,6 @@
 import Card from '../ui/card'
 import {
   CarIcon,
-  CommentsIcon,
-  CommissionIcon,
   DriverIcon,
   MoneyBagWhiteIcon,
   PeopleIcon,
@@ -12,18 +10,12 @@ import './index.scss'
 
 type TProps = {
   role: 'driver' | 'passanger'
-  data: {
-    amount: number
-    stars: number
-    comments: string[]
-  }
-  amounts?:{
-    money: number
-    commissions: number
-  }
+  trips: number
+  rate: number
+  money?: number
 }
 
-const RidesCount = ({ role, data, amounts}: TProps) => {
+const RidesCount = ({ role, trips, money, rate}: TProps) => {
   return (
     <Card>
       <div className='rides-card'>
@@ -32,24 +24,17 @@ const RidesCount = ({ role, data, amounts}: TProps) => {
           {role == 'passanger' && <PeopleIcon style={{ width: '70px' }} />}
           <div className='rides-counts__info'>
             <div>
-              <CarIcon style={{ width: '20px' }} /> {data.amount} viajes hechos
+              <CarIcon style={{ width: '20px' }} /> {trips} viajes hechos
             </div>
             <div>
-              <CommentsIcon style={{ width: '20px' }} /> {data.comments.length}{' '}
-              calificaciones
-            </div>
-            <div>
-              <StarIconFilled style={{ width: '20px' }} /> {data.stars} / 5
+              <StarIconFilled style={{ width: '20px' }} /> {rate} / 5
             </div>
           </div>
         </div>
         {role == 'driver' && (
           <div className='rides-amounts'>
             <div className='rides-amounts__money'>
-              <MoneyBagWhiteIcon />{`$${amounts?.money} generados`} 
-            </div>
-            <div className='rides-amounts__commissions'>
-              <CommissionIcon /> {`Comisión $${amounts?.money}`} 
+              <MoneyBagWhiteIcon />{`$${money} generados`} 
             </div>
           </div>
         )}

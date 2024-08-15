@@ -11,7 +11,7 @@ import {
 } from '../../components/ui/icon'
 import Input from '../../components/ui/input'
 import Button from '../../components/ui/button'
-import { REGISTER_SERVICE } from '../../services/register'
+import { REGISTER_SERVICE } from '../../services/accounts/register'
 import useFetchMutation from '../../hooks/useFetchMutation'
 
 const RegisterForm = () => {

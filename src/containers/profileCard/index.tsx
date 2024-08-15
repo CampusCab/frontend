@@ -9,6 +9,7 @@ import {
 } from '../../components/ui/icon'
 
 import './index.scss'
+import { TEditProfile } from '../../config/types/forms'
 
 import EditProfileForm from '../../components/editProfileForm'
 import VehicleCard from '../../components/vehicleCard'
@@ -16,16 +17,26 @@ import { Vehicle } from '../../config/types/trips'
 import { useState } from 'react'
 import EditVehicleForm from '../../components/editVehicleForm'
 import Button from '../../components/ui/button'
+import { useForm } from 'react-hook-form'
 
 export type ProfileCardProps = {
   user: Profile
   isEditing?: boolean
+  onEdit: (profile: Profile) => void
+  refetch: () => void
 }
 
-const ProfileCard = ({ user, isEditing }: ProfileCardProps) => {
+const ProfileCard = ({
+  user,
+  isEditing,
+  onEdit,
+  refetch
+}: ProfileCardProps) => {
   const [editingVehicle, setEditingVehicle] = useState<Vehicle>({} as Vehicle)
   const [isEditingVehicle, setIsEditingVehicle] = useState('')
   const [addingVehicle, setAddingVehicle] = useState(false)
+
+  const { control, handleSubmit } = useForm<TEditProfile>()
 
   const handleEditVehicle = (vehicle: Vehicle) => {
     if (isEditingVehicle) {
@@ -33,7 +44,6 @@ const ProfileCard = ({ user, isEditing }: ProfileCardProps) => {
         setEditingVehicle(vehicle)
         setIsEditingVehicle(vehicle.license)
       } else {
-        // Save
         setEditingVehicle({} as Vehicle)
         setIsEditingVehicle('')
       }
@@ -45,6 +55,10 @@ const ProfileCard = ({ user, isEditing }: ProfileCardProps) => {
 
   const handleAddVehicle = () => {
     setAddingVehicle(!addingVehicle)
+  }
+
+  const onSubmit = (data: TEditProfile) => {
+    onEdit({ ...user, ...data })
   }
 
   return (
@@ -60,7 +74,7 @@ const ProfileCard = ({ user, isEditing }: ProfileCardProps) => {
         </div>
         <div className='details'>
           <h4>
-            {user.firstName} {user.lastName}
+            {user.first_name} {user.last_name}
           </h4>
           <div className='details__row'>
             <EmailIcon style={{ width: '20px' }} /> {user.email}
@@ -69,18 +83,24 @@ const ProfileCard = ({ user, isEditing }: ProfileCardProps) => {
             <PhoneIcon style={{ width: '20px' }} /> {user.phone}
           </div>
           <div className='details__row'>
-            <CarIcon style={{ width: '20px' }} /> {user.carsRegistered.length}{' '}
-            autos registrados
+            <CarIcon style={{ width: '20px' }} /> {user.vehicles.length} autos
+            registrados
           </div>
         </div>
         {isEditing && (
           <>
-            <EditProfileForm
-              firstName={user.firstName}
-              lastName={user.lastName}
-              phone={user.phone}
-            />
-            {user.carsRegistered.map((car) => (
+            <form action='form' onSubmit={handleSubmit(onSubmit)}>
+              <EditProfileForm
+                firstName={user.first_name}
+                lastName={user.last_name}
+                phone={user.phone}
+                control={control}
+              />
+              <Button type='submit' variant='primary' style={{ width: '100%' }}>
+                Guardar
+              </Button>
+            </form>
+            {user.vehicles.map((car) => (
               <>
                 <VehicleCard
                   item={car}
@@ -90,10 +110,14 @@ const ProfileCard = ({ user, isEditing }: ProfileCardProps) => {
                 />
                 {editingVehicle.license === car.license && (
                   <EditVehicleForm
+                    id={editingVehicle.id}
                     licence={editingVehicle.license}
                     max_passengers={editingVehicle.max_passengers}
                     model={editingVehicle.model}
-                    handleCancel={() => handleEditVehicle({} as Vehicle)}
+                    onClose={() => {
+                      handleEditVehicle({} as Vehicle)
+                    }}
+                    refetch={refetch}
                   />
                 )}
               </>
@@ -109,7 +133,12 @@ const ProfileCard = ({ user, isEditing }: ProfileCardProps) => {
               {!addingVehicle ? 'Agregar nuevo vehículo' : 'Guardar vehículo'}
             </Button>
             {addingVehicle && (
-              <EditVehicleForm handleCancel={() => setAddingVehicle(false)} />
+              <EditVehicleForm
+                onClose={() => {
+                  setAddingVehicle(false)
+                }}
+                refetch={refetch}
+              />
             )}
           </>
         )}

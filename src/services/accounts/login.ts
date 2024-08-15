@@ -1,6 +1,6 @@
-import env from '../../env'
-import { FetchServiceParams } from '../config/types/services'
-import { User } from '../config/types/user'
+import env from '../../../env'
+import { FetchServiceParams } from '../../config/types/services'
+import { User } from '../../config/types/user'
 
 export type ServiceBody = {
   email: string

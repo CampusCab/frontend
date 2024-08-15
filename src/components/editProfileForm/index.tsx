@@ -1,23 +1,22 @@
-import { Controller, useForm } from 'react-hook-form'
-import { TEditProfile } from '../../config/types/forms'
+import { Control, Controller } from 'react-hook-form'
 import Input from '../../components/ui/input'
-import { LockIcon, PhoneIcon, UserFillIcon } from '../ui/icon'
+import { PhoneIcon, UserFillIcon } from '../ui/icon'
+import { TEditProfile } from '../../config/types/forms'
 
 export type TProps = {
   firstName: string
   lastName: string
   phone: string
+  control: Control<TEditProfile>
 }
 
-const EditProfileForm = ({ firstName, lastName, phone }: TProps) => {
-  const { control, handleSubmit } = useForm<TEditProfile>()
-
+const EditProfileForm = ({ firstName, lastName, phone, control }: TProps) => {
   return (
-    <form className='form'>
+    <>
       <div className='form__row'>
         <Controller
           control={control}
-          name='firstName'
+          name='first_name'
           defaultValue={firstName}
           render={({ field, fieldState }) => (
             <Input
@@ -33,7 +32,7 @@ const EditProfileForm = ({ firstName, lastName, phone }: TProps) => {
         />
         <Controller
           control={control}
-          name='lastName'
+          name='last_name'
           defaultValue={lastName}
           render={({ field, fieldState }) => (
             <Input
@@ -65,41 +64,7 @@ const EditProfileForm = ({ firstName, lastName, phone }: TProps) => {
           )}
         />
       </div>
-      <div className='form__row' style={{ flexWrap: 'wrap' }}>
-        <Controller
-          control={control}
-          name='password'
-          defaultValue=''
-          render={({ field, fieldState }) => (
-            <Input
-              name='password'
-              placeholder='Contraseña'
-              type='password'
-              icon={<LockIcon style={{ width: '20px' }} />}
-              value={field.value}
-              errorMessage={fieldState.error?.message}
-              onChange={field.onChange}
-            />
-          )}
-        />
-        <Controller
-          control={control}
-          name='confirmPassword'
-          defaultValue=''
-          render={({ field, fieldState }) => (
-            <Input
-              name='confirmPassword'
-              placeholder='Confirma tu contraseña'
-              type='password'
-              icon={<LockIcon style={{ width: '20px' }} />}
-              value={field.value}
-              errorMessage={fieldState.error?.message}
-              onChange={field.onChange}
-            />
-          )}
-        />
-      </div>
-    </form>
+    </>
   )
 }
 

@@ -2,7 +2,7 @@ import './index.scss'
 
 import { Vehicle } from '../../config/types/trips'
 import Card from '../ui/card'
-import { EditIcon, InfoIcon, PeopleIcon, SaveIcon } from '../ui/icon'
+import { EditIcon, InfoIcon, PeopleIcon } from '../ui/icon'
 import Button from '../ui/button'
 
 type VehicleCardProps = {
@@ -21,7 +21,7 @@ const VehicleCard = ({
   return (
     <Card onClick={() => onClick && onClick(item)}>
       <div className='vehicle-card' style={{ padding: '1rem 0' }}>
-        <img src={`/assets/${item.type}.svg`} alt='Vehicule image' />
+        <img src={`/assets/${item.vehicle_type}.svg`} alt='Vehicule image' />
         <div className='vehicle-card__body'>
           <h4>{item.license}</h4>
           <div className='vehicle-info'>
@@ -35,7 +35,7 @@ const VehicleCard = ({
             </p>
           </div>
         </div>
-        {handleEdit && (
+        {handleEdit && !editingVehicle && (
           <Button
             variant='primary'
             type='button'
@@ -45,13 +45,7 @@ const VehicleCard = ({
               marginLeft: 'auto',
               height: 'fit-content'
             }}
-            iconLeft={
-              editingVehicle === item.license ? (
-                <SaveIcon style={{ width: '20px' }} />
-              ) : (
-                <EditIcon style={{ width: '20px' }} />
-              )
-            }
+            iconLeft={<EditIcon style={{ width: '20px' }} />}
             onClick={() => handleEdit()}
           />
         )}

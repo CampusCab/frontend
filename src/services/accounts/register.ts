@@ -1,6 +1,6 @@
-import env from "../../env";
-import { FetchServiceParams } from "../config/types/services";
-import { RegisterInfo } from "../config/types/user";
+import env from "../../../env";
+import { FetchServiceParams } from "../../config/types/services";
+import { RegisterInfo } from "../../config/types/user";
 
 export type ServiceBody = RegisterInfo
 

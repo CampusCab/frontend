@@ -6,7 +6,7 @@ import { TVerifyRegisterForm } from '../../config/types/forms'
 import Input from '../../components/ui/input'
 import Button from '../../components/ui/button'
 import useFetchMutation from '../../hooks/useFetchMutation'
-import { VERIFY_REGISTRATION_SERVICE } from '../../services/verify'
+import { VERIFY_REGISTRATION_SERVICE } from '../../services/accounts/verify'
 
 const VerifyRegister = () => {
   const { control, handleSubmit } = useForm<TVerifyRegisterForm>()

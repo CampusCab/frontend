@@ -4,7 +4,7 @@ export interface Passenger {
   firstName: string
   lastName: string
   image?: string
-  offer?: PaymentOffer
+  offer?: Offer
 }
 
 export interface Driver {
@@ -17,27 +17,26 @@ export interface Driver {
 }
 
 export interface Vehicle {
+  id?: number
   license: string
-  type: 'car' | 'bike'
+  vehicle_type?: 'car' | 'bike'
   model: string
   max_passengers: number
 }
 
 export interface TripInfo {
-  id: number
-  driver: Driver
+  id?: number
+  vehicle: number
   origin: string
   destination: string
-  date: string
-  availableSeats: number
-  maxSeats: number
-  description?: string
+  start_time: string
+  description: string
+  offers: Offer[]
 }
 
-export interface PaymentOffer {
+export interface Offer {
   id: number
-  trip: TripInfo
-  ammount: number
+  passenger_id: number
+  amount: number
+  pending_to_rate_user: boolean
 }
-
-

@@ -1,5 +1,5 @@
 import useFetchMutation from './useFetchMutation'
-import { LOGIN_SERVICE } from '../services/login'
+import { LOGIN_SERVICE } from '../services/accounts/login'
 import { TLoginForm } from '../config/types/forms'
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../providers/userContext'

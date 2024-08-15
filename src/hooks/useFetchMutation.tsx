@@ -3,29 +3,35 @@ import {
   FetchServiceParams,
   ServiceBody,
   ServiceError,
-  ServiceResponse
+  ServiceResponse,
+  ServiceParams
 } from '../config/types/services'
 
 const useFetchMutation = <
   B extends ServiceBody,
   R extends ServiceResponse,
+  P extends ServiceParams,
   E extends ServiceError
 >({
   url,
   method,
   headers
-}: FetchServiceParams<B, R>) => {
+}: FetchServiceParams<B, R, P>) => {
   const [isLoading, setIsLoading] = useState(false)
-  const fetchService = async (body: B) => {
+  const fetchService = async (body: B, params?: P) => {
     try {
       setIsLoading(true)
-      const response = await fetch(url, {
-        method: method,
-        headers: headers || {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      })
+      const response = await fetch(
+        params ? `${url}/${params?.toString()}` : url,
+        {
+          method: method,
+          headers: {
+            'Content-Type': 'application/json',
+            ...headers
+          },
+          body: JSON.stringify(body)
+        }
+      )
       if (!response.ok) {
         setIsLoading(false)
         return {
