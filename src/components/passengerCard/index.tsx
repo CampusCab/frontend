@@ -1,36 +1,37 @@
 import './index.scss'
 
 import Card from '../ui/card'
-import { Passenger } from '../../config/types/trips'
-import { MinusIcon, MoneyBagBlueIcon } from '../ui/icon'
+import { Offer } from '../../config/types/trips'
+import { MoneyBagBlueIcon } from '../ui/icon'
 import Button from '../ui/button'
 
 type PassengerCardProps = {
-  item: Passenger
+  item: Offer
   hasActions?: boolean
   hasDelete?: boolean
+  onAccept?: (id: number) => void
+  onReject?: (id: number) => void
 }
 
-const PassengerCard = ({ item, hasActions, hasDelete }: PassengerCardProps) => {
+const PassengerCard = ({
+  item,
+  hasActions,
+  onAccept,
+  onReject
+}: PassengerCardProps) => {
   return (
-    <Card>
-      <div className='passenger-card' style={{ padding: '1rem 0' }}>
-        <img
-          src={item.image ?? '/assets/male-avatar.svg'}
-          alt='Passenger image'
-        />
+    <Card style={{ padding: '0.5rem 1rem' }}>
+      <div className='passenger-card'>
+        <img src={'/assets/male-avatar.svg'} alt='Passenger image' />
         <div className='passenger-card__body'>
-          <h4>
-            {item.firstName} {item.lastName}
-          </h4>
-          {item.offer && (
+          <h4>{item.passenger_name}</h4>
+          {item.amount && (
             <div style={{ display: 'flex', gap: '10px' }}>
-              <MoneyBagBlueIcon style={{width: '20px'}} />
-              <span>{item.offer.ammount}</span>
+              <MoneyBagBlueIcon style={{ width: '20px' }} />
+              <span>{item.amount}</span>
             </div>
           )}
         </div>
-        {hasDelete && <MinusIcon style={{ marginLeft: 'auto' }} />}
       </div>
       {hasActions && (
         <div className='passenger-card__actions'>
@@ -42,16 +43,22 @@ const PassengerCard = ({ item, hasActions, hasDelete }: PassengerCardProps) => {
               height: '30px',
               fontSize: '0.8rem'
             }}
+            onClick={() => {
+              onAccept?.(item.id)
+            }}
           >
             Aceptar
           </Button>
           <Button
             type='button'
-            variant='secondary'
+            variant='danger'
             style={{
               minWidth: '40%',
               height: '30px',
               fontSize: '0.8rem'
+            }}
+            onClick={() => {
+              onReject?.(item.id)
             }}
           >
             Rechazar

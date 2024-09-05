@@ -9,7 +9,7 @@ const TripCardList = ({ data }: TripCardListProps) => {
   return (
     <>
       {data.map((item, index) => (
-        <TripCard key={index} item={item}/>
+        <TripCard key={index} trip={item}/>
       ))}
     </>
   )

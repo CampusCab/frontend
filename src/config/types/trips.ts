@@ -1,10 +1,8 @@
+import { UserInfo } from './user'
+
 export interface Passenger {
-  idType: string
-  idNumber: string
-  firstName: string
-  lastName: string
-  image?: string
-  offer?: Offer
+  passenger_id: number
+  passenger_name: string
 }
 
 export interface Driver {
@@ -31,12 +29,22 @@ export interface TripInfo {
   destination: string
   start_time: string
   description: string
-  offers: Offer[]
+  capacity: number
+  vehicle_info: Vehicle
+  offers?: Offer[]
+  driver_info?: UserInfo
 }
 
 export interface Offer {
   id: number
   passenger_id: number
+  passenger_name: string
   amount: number
-  pending_to_rate_user: boolean
+  trip?: number
+  pending_to_rate_user?: boolean
+  accepted?: boolean
+  finished?: boolean
+  finished_by?: string
+  stars_to_user?: number
+  stars_to_driver?: number
 }

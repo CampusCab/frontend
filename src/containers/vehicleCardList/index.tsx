@@ -7,20 +7,25 @@ import Button from '../../components/ui/button'
 type VehicleCardListProps = {
   data: Vehicle[]
   onClick: (vehicle: Vehicle) => void
-  hasSelection: boolean
+  selectedVehicle?: Vehicle
   onContinue: () => void
 }
 
 const VehicleCardList = ({
   data,
-  hasSelection,
+  selectedVehicle,
   onClick,
   onContinue
 }: VehicleCardListProps) => {
   return (
     <div className='vehicle-list'>
       {data.map((vehicle, index) => (
-        <VehicleCard item={vehicle} onClick={onClick} key={index} />
+        <VehicleCard
+          vehicle={vehicle}
+          onClick={onClick}
+          isSelected={vehicle.id === selectedVehicle?.id}
+          key={index}
+        />
       ))}
       <p className='vehicle-list__message'>
         Puedes agregar más
@@ -30,7 +35,7 @@ const VehicleCardList = ({
       <Button
         type='button'
         variant='primary'
-        disabled={!hasSelection}
+        disabled={!selectedVehicle}
         onClick={onContinue}
       >
         Seleccionar

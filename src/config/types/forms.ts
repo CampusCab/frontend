@@ -1,4 +1,3 @@
-import { Vehicle } from './trips'
 import { RegisterInfo } from './user'
 
 // Forms
@@ -22,11 +21,13 @@ export type TVerifyRegisterForm = {
 }
 
 export type TOfferTrip = {
-  vehicle: Vehicle
+  vehicle: number
   origin: string
+  otherOrigin: string
   destination: string
-  hour: string
-  description: string
+  otherDestination: string
+  start_time: string
+  description?: string
 }
 
 export type TEditProfile = {

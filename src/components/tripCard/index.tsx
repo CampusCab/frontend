@@ -1,27 +1,67 @@
 import './index.scss'
 
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Input from '../ui/input'
 import Button from '../ui/button'
 import { CheckIcon, MoneyBagIcon, SendIcon } from '../ui/icon'
 import DriverCard, { DriverCardProps } from '../driverCard'
+import { UseAuth } from '../../hooks/useAuth'
+import useFetchMutation from '../../hooks/useFetchMutation'
+import { SEND_OFFER } from '../../services/offers/sendOffer'
+import { UserContext } from '../../providers/userContext'
 
-interface TripCardProps extends DriverCardProps {
-  success?: boolean
-}
+interface TripCardProps extends DriverCardProps {}
 
-const TripCard = ({ item, success }: TripCardProps) => {
+const TripCard = ({ trip }: TripCardProps) => {
   const [showDescription, setShowDescription] = useState(false)
+  const [offer, setOffer] = useState<number>(0)
+  const [success, setSuccess] = useState(false)
+
+  const { getTokens } = UseAuth()
+  const { fetchService, isLoading } = useFetchMutation({
+    ...SEND_OFFER,
+    headers: { Authorization: `Bearer ${getTokens().access_token}` }
+  })
+
+  const { userInfo } = useContext(UserContext)
 
   const handleShowDescription = () => {
-    setShowDescription(!showDescription)
+    if (!success) {
+      setShowDescription(!showDescription)
+    }
   }
 
+  const handleSendOffer = async () => {
+    await fetchService(
+      {
+        amount: offer
+      },
+      String(trip?.id)
+    )
+      .then(() => {
+        setSuccess(true)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  useEffect(() => {
+    if (trip.offers?.some((o) => o.passenger_id === userInfo.id)) {
+      setSuccess(true)
+      setShowDescription(true)
+    }
+  }, [trip, userInfo.id])
+
   return (
-    <DriverCard item={item} onClick={handleShowDescription}>
+    <DriverCard
+      user={trip.driver_info}
+      trip={trip}
+      onClick={handleShowDescription}
+    >
       {showDescription && (
         <div className='description'>
-          <p>{item.description}</p>
+          <p>{trip.description}</p>
           <div
             style={{
               display: 'flex',
@@ -32,7 +72,7 @@ const TripCard = ({ item, success }: TripCardProps) => {
           >
             {success ? (
               <>
-                <CheckIcon style={{ margin: '1rem 0' }} />
+                <CheckIcon style={{ margin: '1rem 0', height: '35px' }} />
                 <h4
                   style={{
                     color: '#8EB826',
@@ -48,16 +88,26 @@ const TripCard = ({ item, success }: TripCardProps) => {
                 <Input
                   name='offer'
                   type='number'
-                  value=''
+                  value={offer}
+                  onChange={(e) => {
+                    const value = parseInt(e.target.value)
+                    if (value < 0) return
+                    setOffer(value)
+                  }}
                   variant='rounded'
                   placeholder='Tu oferta'
                   icon={<MoneyBagIcon />}
                 />
                 <Button
                   type='button'
-                  variant='inverse'
+                  variant='primary'
                   iconLeft={<SendIcon style={{ width: '20px' }} />}
-                  style={{ margin: '1rem 0', color: '#fff' }}
+                  style={{
+                    margin: '1rem 0',
+                    color: '#fff',
+                    minWidth: 'fit-content'
+                  }}
+                  onClick={handleSendOffer}
                 >
                   Enviar
                 </Button>

@@ -1,80 +1,49 @@
 import './index.scss'
 import DriverCard from '../../components/driverCard'
-import { Passenger, TripInfo, Vehicle } from '../../config/types/trips'
 import VehicleCard from '../../components/vehicleCard'
 import PassengersCardList from '../../containers/passengersCardList'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import OffersCardList from '../../containers/offersCardList'
-
-const item: TripInfo = {
-  id: 1,
-  driver: {
-    idType: 'CC',
-    idNumber: '123456789',
-    firstName: 'Juan',
-    lastName: 'Perez',
-    stars: '4.5'
-  },
-  origin: 'Bogotá',
-  destination: 'Medellín',
-  date: '2022-01-01',
-  hour: '06:00',
-  availableSeats: 3,
-  maxSeats: 4,
-  description:
-    'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-}
-
-const vehicle: Vehicle = {
-  id: 'ABC-123',
-  type: 'car',
-  brand: 'Chevrolet',
-  model: 'Spark',
-  year: 2020,
-  seats: 4
-}
-
-const passengers: Passenger[] = [
-  {
-    idType: 'CC',
-    idNumber: '123456789',
-    firstName: 'Juan',
-    lastName: 'Perez'
-  },
-  {
-    idType: 'CC',
-    idNumber: '987654321',
-    firstName: 'Maria',
-    lastName: 'Rodriguez'
-  }
-]
-
-const offers: Passenger[] = [
-  {
-    idType: 'CC',
-    idNumber: '123456789',
-    firstName: 'Juan',
-    lastName: 'Perez',
-    offer: {
-      id: 1,
-      trip: item,
-      ammount: 30000
-    }
-  }
-]
+import Button from '../../components/ui/button'
+import { UseAuth } from '../../hooks/useAuth'
+import { CURRENT_TRIP_SERVICE } from '../../services/trips/currentTrip'
+import useFetch from '../../hooks/useFetch'
+import { UserInfo } from '../../config/types/user'
 
 const YourTripPage = () => {
   const { pathname } = useLocation()
+  const navigate = useNavigate()
   const location = pathname.split('/')[1] === 'offer-trip'
+  const { getTokens } = UseAuth()
+  const userInfo: UserInfo = JSON.parse(localStorage.getItem('user') || '{}')
+
+  const { response, refetch } = useFetch({
+    ...CURRENT_TRIP_SERVICE,
+    headers: {
+      Authorization: `Bearer ${getTokens()?.access_token}`
+    }
+  })
 
   return (
-    <section className='your-trip'>
-      <h2>Tu próximo viaje</h2>
-      <DriverCard item={item} />
-      <VehicleCard item={vehicle} />
-      {location && <OffersCardList data={offers} />}
-      <PassengersCardList data={passengers} />
-    </section>
+    <>
+      {response && (
+        <section className='your-trip'>
+          <h2>Tu próximo viaje</h2>
+          <DriverCard user={response.driver_info} trip={response} />
+          <VehicleCard vehicle={response.vehicle_info} />
+          {location && <OffersCardList data={response.offers!} refetch={refetch}/>}
+          <PassengersCardList data={response.offers!}/>
+          <Button
+            variant='danger'
+            type='button'
+            onClick={() => userInfo.currently_driver ? navigate(`/rate-passengers/${response.id}`): navigate(`/rate-driver/${response.id}`)}
+            style={{ width: '100%', margin: '2rem 0' }}
+          >
+            Terminar viaje
+          </Button>
+        </section>
+      )}
+    </>
   )
 }
 

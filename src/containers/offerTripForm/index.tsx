@@ -12,27 +12,40 @@ import {
 import Input from '../../components/ui/input'
 import TextArea from '../../components/ui/textArea'
 import Button from '../../components/ui/button'
-import useFetch from '../../hooks/useFetch'
-import { MY_VEHICLES_SERVICE } from '../../services/vehicles/myVehicles'
+import useFetchMutation from '../../hooks/useFetchMutation'
+import { CREATE_TRIPS } from '../../services/trips/createTrip'
 import { UseAuth } from '../../hooks/useAuth'
 
-const options = ['Option 1', 'Option 2', 'Option 3']
+const options = [
+  'Campus El Volador',
+  'Campus Del Río',
+  'Campus Robledo',
+  'Otro'
+]
 
-const OfferTripForm = () => {
-  const [hasSelection, setHasSelection] = useState(false)
+export type TProps = {
+  data: Vehicle[]
+  isLoading: boolean
+  setHasActiveTrip: () => void
+}
+
+const OfferTripForm = ({ data, isLoading, setHasActiveTrip }: TProps) => {
+  const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | undefined>()
   const [showDetails, setShowDetails] = useState(false)
-  const form = useForm<TOfferTrip>()
+  const { control, setValue, handleSubmit } = useForm<TOfferTrip>()
   const { getTokens } = UseAuth()
-  const { response, isLoading } = useFetch({
-    ...MY_VEHICLES_SERVICE,
+  const userInfo = JSON.parse(localStorage.getItem('user')  || '{}')
+
+  const { fetchService } = useFetchMutation({
+    ...CREATE_TRIPS,
     headers: {
       Authorization: `Bearer ${getTokens()?.access_token}`
     }
   })
 
   const handleSelectVehicle = (vehicle: Vehicle) => {
-    form.setValue('vehicle', vehicle)
-    setHasSelection(true)
+    setValue('vehicle', vehicle.id!)
+    setSelectedVehicle(vehicle)
   }
 
   const handleContinue = () => {
@@ -40,73 +53,134 @@ const OfferTripForm = () => {
   }
 
   const handleSelect = (value: string, field: keyof TOfferTrip) => {
-    form.setValue(field, value)
+    setValue(field, value)
+  }
+
+  const onSubmit = async (data: TOfferTrip) => {
+    await fetchService({
+      vehicle: data.vehicle,
+      destination: data.destination === 'Otro' ? data.otherDestination : data.destination,
+      origin: data.origin === 'Otro' ? data.otherOrigin : data.origin,
+      start_time: data.start_time,
+      description: data?.description
+    }).then(() => {
+      localStorage.setItem('user', JSON.stringify({ ...userInfo, currently_driver: true }))
+      setHasActiveTrip()
+    })
   }
 
   const renderVehicleList = !isLoading && (
     <VehicleCardList
-      data={response.vehicles}
+      data={data}
       onClick={(vehicle) => handleSelectVehicle(vehicle)}
-      hasSelection={hasSelection}
+      selectedVehicle={selectedVehicle}
       onContinue={handleContinue}
     />
   )
 
   const renderForm = (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Controller
         name='origin'
-        control={form.control}
+        control={control}
+        rules={{
+          required: 'Origen es requerido',
+          validate: (value) =>
+            value === 'Otro' && control._formValues.destination === 'Otro'
+              ? 'Origen o destino debe ser un campus'
+              : true
+        }}
         render={({ field, fieldState }) => (
-          <Select
-            options={options}
-            value={field.value}
-            placeholder='Ingresa origen del viaje'
-            icon={<OriginGreyIcon />}
-            onChange={(e) => handleSelect(e.target.value, 'origin')}
-            errorMessage={fieldState.error?.message}
-          />
+          <>
+            <Select
+              options={options}
+              value={field.value}
+              placeholder='Ingresa origen del viaje'
+              icon={<OriginGreyIcon />}
+              onChange={(e) => handleSelect(e.target.value, 'origin')}
+              errorMessage={fieldState.error?.message}
+            />
+            {field.value === 'Otro' && (
+              <Controller
+                name='otherOrigin'
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    type='text'
+                    variant='rounded'
+                    placeholder='Ingresa el origen del viaje'
+                    {...field}
+                  />
+                )}
+              />
+            )}
+          </>
         )}
       />
       <Controller
         name='destination'
-        control={form.control}
+        control={control}
+        rules={{
+          required: 'Origen es requerido',
+          validate: (value) =>
+            value === 'Otro' && control._formValues.origin === 'Otro'
+              ? 'Origen o destino debe ser un campus'
+              : true
+        }}
         render={({ field, fieldState }) => (
-          <Select
-            options={options}
-            value={field.value}
-            placeholder='Ingresa destino del viaje'
-            icon={<DestinationGreyIcon />}
-            onChange={(e) => handleSelect(e.target.value, 'destination')}
-            errorMessage={fieldState.error?.message}
-          />
+          <>
+            <Select
+              options={options}
+              value={field.value}
+              placeholder='Ingresa destino del viaje'
+              icon={<DestinationGreyIcon />}
+              onChange={(e) => {
+                handleSelect(e.target.value, 'destination')
+              }}
+              errorMessage={fieldState.error?.message}
+            />
+            {field.value === 'Otro' && (
+              <Controller
+              name='otherDestination'
+              control={control}
+              render={({ field }) => (
+                <Input
+                  type='text'
+                  variant='rounded'
+                  placeholder='Ingresa el destino del viaje'
+                  {...field}
+                />
+              )}
+            />
+            )}
+          </>
         )}
       />
       <Controller
-        name='hour'
-        control={form.control}
+        name='start_time'
+        control={control}
+        rules={{ required: 'Hora es requerida' }}
         render={({ field, fieldState }) => (
           <div style={{ display: 'flex' }}>
             <ClockGreyIcon style={{ marginRight: '10px' }} />
             <Input
-              name='hour'
-              type='text'
+              type='datetime-local'
               variant='rounded'
-              value={field.value}
               errorMessage={fieldState.error?.message}
               placeholder='Ingresa la hora de inicio'
+              {...field}
             />
           </div>
         )}
       />
       <Controller
         name='description'
-        control={form.control}
+        control={control}
         render={({ field, fieldState }) => (
           <div style={{ display: 'flex', alignItems: 'flex-start' }}>
             <TextArea
               name='description'
-              value={field.value}
+              value={field.value!}
               variant='rounded'
               label='Ingresa indicaciones extra (Opcional):'
               errorMessage={fieldState.error?.message}
@@ -117,7 +191,7 @@ const OfferTripForm = () => {
       />
       <Button
         type='submit'
-        variant='inverse'
+        variant='primary'
         style={{ minWidth: '200px', margin: '2rem auto' }}
       >
         Publicar
@@ -126,14 +200,16 @@ const OfferTripForm = () => {
   )
 
   return (
-    <section className='offer-trip'>
-      <h3>
-        {showDetails
-          ? 'Completa la información del viaje'
-          : 'Selecciona el vehículo que usarás'}
-      </h3>
-      {showDetails ? renderForm : renderVehicleList}
-    </section>
+    <>
+      <section className='offer-trip'>
+        <h3>
+          {showDetails
+            ? 'Completa la información del viaje'
+            : 'Selecciona el vehículo que usarás'}
+        </h3>
+        {showDetails ? renderForm : renderVehicleList}
+      </section>
+    </>
   )
 }
 

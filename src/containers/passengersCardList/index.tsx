@@ -1,17 +1,26 @@
-import { Passenger } from '../../config/types/trips'
+import { Offer } from '../../config/types/trips'
 import PassegnerCard from '../../components/passengerCard'
 
 type PassengersCardListProps = {
-  data: Passenger[]
+  data: Offer[]
 }
 
 const PassengersCardList = ({ data }: PassengersCardListProps) => {
+
+
   return (
     <div>
-      <h3>Pasajeros</h3>
-      {data.map((passenger, index) => (
-        <PassegnerCard key={index} item={passenger} hasDelete />
-      ))}
+      {data.filter((item) => item.accepted && !item.finished).length !== 0 && (
+        <>
+          <h3>Pasajeros</h3>
+          {data.map(
+            (passenger, index) =>
+              passenger.accepted && !passenger.finished  && (
+                <PassegnerCard key={index} item={passenger} />
+              )
+          )}
+        </>
+      )}
     </div>
   )
 }

@@ -103,7 +103,7 @@ const ProfileCard = ({
             {user.vehicles.map((car) => (
               <>
                 <VehicleCard
-                  item={car}
+                  vehicle={car}
                   key={car.license}
                   editingVehicle={isEditingVehicle}
                   handleEdit={() => handleEditVehicle(car)}
