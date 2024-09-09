@@ -18,7 +18,7 @@ const TripCard = ({ trip }: TripCardProps) => {
   const [success, setSuccess] = useState(false)
 
   const { getTokens } = UseAuth()
-  const { fetchService, isLoading } = useFetchMutation({
+  const { fetchService } = useFetchMutation({
     ...SEND_OFFER,
     headers: { Authorization: `Bearer ${getTokens().access_token}` }
   })

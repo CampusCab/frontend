@@ -10,7 +10,7 @@ export type ServiceResponse = {
     message: string
 }
 
-export const VERIFY_REGISTRATION_SERVICE = <FetchServiceParams<ServiceBody, ServiceResponse>>{
+export const VERIFY_REGISTRATION_SERVICE = <FetchServiceParams<ServiceBody, ServiceResponse, never>>{
     url: `${env.BACKEND_AUTH_URL}/verify/`,
     method: 'POST',
 }
