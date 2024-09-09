@@ -1,0 +1,39 @@
+@import 'src/styles/colors.scss';
+
+.rate-driver {
+  background-color: $secondary-color;
+  width: 100%;
+
+  > h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+
+    > img {
+      padding-right: 10px;
+    }
+  }
+
+  &__rate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__stars {
+    display: flex;
+    margin-bottom: 1rem;
+
+    > img {
+      width: 30px;
+      height: 30px;
+      margin: 0 5px;
+    }
+  }
+}
