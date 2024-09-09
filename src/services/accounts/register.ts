@@ -8,7 +8,7 @@ export type ServiceResponse = {
     message: string
 }
 
-export const REGISTER_SERVICE = <FetchServiceParams<ServiceBody, ServiceResponse>>{
+export const REGISTER_SERVICE = <FetchServiceParams<ServiceBody, ServiceResponse, never>>{
     url: `${env.BACKEND_AUTH_URL}/register/`,
     method: 'POST',
 }

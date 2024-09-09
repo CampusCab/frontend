@@ -9,7 +9,7 @@ export type ServiceBody = {
 
 export type ServiceResponse = User
 
-export const LOGIN_SERVICE = <FetchServiceParams<ServiceBody, ServiceResponse>>{
+export const LOGIN_SERVICE = <FetchServiceParams<ServiceBody, ServiceResponse, never>>{
   url: `${env.BACKEND_AUTH_URL}/login/`,
   method: 'POST'
 }
