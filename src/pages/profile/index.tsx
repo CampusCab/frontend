@@ -84,8 +84,8 @@ const Profile = () => {
                       <h2>Como conductor</h2>
                       <RidesCount
                         role='driver'
-                        trips={userProfile.total_trips_driver}
-                        rate={userProfile.rating_driver}
+                        trips={userProfile.trips.as_driver.length}
+                        rate={userProfile.rating_driver === 0 ? 5 : Number(userProfile.rating_driver.toPrecision(2))}
                         money={userProfile.trips.total_collected}
                       />
                     </>
@@ -96,8 +96,8 @@ const Profile = () => {
                       <h2>Como pasajero</h2>
                       <RidesCount
                         role='passanger'
-                        trips={userProfile.total_trips_passenger}
-                        rate={userProfile.rating_passenger}
+                        trips={userProfile.trips.as_passenger.length}
+                        rate={userProfile.rating_passenger === 0 ? 5 : Number(userProfile.rating_passenger.toPrecision(2))}
                       />
                     </>
                   )}

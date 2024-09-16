@@ -33,7 +33,7 @@ const OfferTripPage = () => {
   return (
     <>
       <MainLayout>
-        {(!currentTrip.currently_driver && response && response.length) && (
+        {(!currentTrip.currently_passenger && !currentTrip.currently_driver && response && response.length) && (
           <OfferTripForm data={response} isLoading={isLoading} setHasActiveTrip={()=>setHasActiveTrip(true)} />
         )}
         <Outlet />

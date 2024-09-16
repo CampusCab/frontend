@@ -19,7 +19,6 @@ const RateDriverPage = () => {
   const { getTokens } = UseAuth()
   const userInfo: UserInfo = JSON.parse(localStorage.getItem('user') || '{}')
 
-
   const { response, isLoading } = useFetch({
     ...CURRENT_TRIP_SERVICE,
     headers: {
@@ -83,15 +82,17 @@ const RateDriverPage = () => {
                 type='button'
                 variant='primary'
                 disabled={!rating}
-                onClick={() =>
-                  fetchService({
+                onClick={async () => {
+                  await fetchService({
                     stars: rating
-                  }).then(() => {
-                localStorage.setItem('user', JSON.stringify({...userInfo, currently_passenger: false}))
-                    navigate('/')
-
                   })
-                }
+                  console.log('Trip finished', userInfo)
+                  localStorage.setItem(
+                    'user',
+                    JSON.stringify({ ...userInfo, currently_passenger: false })
+                  )
+                  navigate('/')
+                }}
               >
                 Enviar calificación
               </Button>
