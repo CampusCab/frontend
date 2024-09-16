@@ -35,7 +35,7 @@ export const PAGES: Route[] = [
     exact: true,
     children: [
       {
-        path: ':email/verify',
+        path: ':email/confirm',
         element: (
           <LoginLayout>
             <VerifyRegister />

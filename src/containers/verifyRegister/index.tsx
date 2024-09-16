@@ -7,12 +7,15 @@ import Input from '../../components/ui/input'
 import Button from '../../components/ui/button'
 import useFetchMutation from '../../hooks/useFetchMutation'
 import { VERIFY_REGISTRATION_SERVICE } from '../../services/accounts/verify'
+import { useRef } from 'react'
 
 const VerifyRegister = () => {
   const { control, handleSubmit } = useForm<TVerifyRegisterForm>()
   const { email } = useParams()
   const navigate = useNavigate()
   const { fetchService } = useFetchMutation({ ...VERIFY_REGISTRATION_SERVICE })
+
+  const inputs  = [useRef(null), useRef(null), useRef(null), useRef(null)]
 
   const handleOnSubmit = async (data: TVerifyRegisterForm) => {
     if (email) {
@@ -36,21 +39,25 @@ const VerifyRegister = () => {
         className='confirm-register-form'
       >
         <div className='confirm-register-form__fields'>
-          {[1, 2, 3, 4, 5, 6].map((char) => (
+          {inputs.map((char, index) => (
             <Controller
-              key={char}
+              key={index}
               control={control}
-              name={`char${char}` as keyof TVerifyRegisterForm}
+              name={`char${index}` as keyof TVerifyRegisterForm}
               defaultValue=''
-              rules={{ required: 'Este campo es requerido' }}
+              rules={{
+                required: 'Este campo es requerido',
+              }}
               render={({ field, fieldState }) => (
                 <Input
-                  name={`char${char}`}
-                  type='text'
+                  name={`char${index}`}
+                  type='text'            
                   value={String(field.value)}
                   errorMessage={fieldState.error?.message}
                   onChange={field.onChange}
                   maxLength={1}
+                  style={{ textTransform: 'uppercase' }}
+                  {...char}
                 />
               )}
             />

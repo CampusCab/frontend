@@ -6,6 +6,7 @@ import {
   ServiceResponse,
   ServiceParams
 } from '../config/types/services'
+import { useNavigate } from 'react-router-dom'
 
 const useFetchMutation = <
   B extends ServiceBody,
@@ -18,6 +19,8 @@ const useFetchMutation = <
   headers
 }: FetchServiceParams<B, R, P>) => {
   const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
+
   const fetchService = async (body: B, params?: P) => {
     try {
       setIsLoading(true)
@@ -33,6 +36,11 @@ const useFetchMutation = <
         }
       )
       if (!response.ok) {
+        if(response.status === 401) {
+          localStorage.removeItem('tokens')
+          localStorage.removeItem('user')
+          navigate('/login')
+        }
         setIsLoading(false)
         return {
           isError: true,

@@ -41,9 +41,15 @@ const FindTripPage = () => {
     }
   }, [isLoading, response])
 
+  useEffect(() => {
+    if (currentTrip.currently_driver && !isLoading) {
+      navigate('/offer-trip')
+    }
+  },[currentTrip, isLoading])
+
   return (
     <MainLayout>
-      {!currentTrip.currently_passenger && response && !isError && (
+      {!currentTrip.currently_passenger && !currentTrip.currently_driver && response && !isError && (
         <section className='trip-list'>
           <SearchBar value={search} onChange={(e) => setSearch(e)} />
           <h2>Viajes disponibles</h2>
