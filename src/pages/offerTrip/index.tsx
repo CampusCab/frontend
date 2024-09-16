@@ -30,6 +30,13 @@ const OfferTripPage = () => {
     }
   }, [isLoading, hasActiveTrip])
 
+  useEffect(() => {
+    if (currentTrip.currently_passenger && !isLoading) {
+      navigate('/find-trip')
+    }
+  },[currentTrip, isLoading])
+
+
   return (
     <>
       <MainLayout>

@@ -23,6 +23,8 @@ const FindTripPage = () => {
     }
   })
 
+
+
   useEffect(() => {
     if (
       (currentTrip.currently_passenger && !isLoading) ||
@@ -39,7 +41,7 @@ const FindTripPage = () => {
         JSON.stringify({ ...userInfo, currently_passenger: true })
       )
     }
-  }, [isLoading, response, currentTrip])
+  }, [isLoading, response, navigate, currentTrip.currently_passenger, currentTrip.id])
 
   useEffect(() => {
     if (currentTrip.currently_driver && !isLoading) {
