@@ -181,10 +181,12 @@ const OfferTripForm = ({ data, isLoading, setHasActiveTrip }: TProps) => {
             <TextArea
               name='description'
               value={field.value!}
+              onChange={field.onChange}
               variant='rounded'
               label='Ingresa indicaciones extra (Opcional):'
               errorMessage={fieldState.error?.message}
               placeholder='Descripcion...'
+              
             />
           </div>
         )}

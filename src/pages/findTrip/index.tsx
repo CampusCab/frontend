@@ -23,6 +23,8 @@ const FindTripPage = () => {
     }
   })
 
+
+
   useEffect(() => {
     if (
       (currentTrip.currently_passenger && !isLoading) ||
@@ -39,11 +41,17 @@ const FindTripPage = () => {
         JSON.stringify({ ...userInfo, currently_passenger: true })
       )
     }
-  }, [isLoading, response])
+  }, [isLoading, response, navigate, currentTrip.currently_passenger, currentTrip.id])
+
+  useEffect(() => {
+    if (currentTrip.currently_driver && !isLoading) {
+      navigate('/offer-trip')
+    }
+  },[currentTrip, isLoading])
 
   return (
     <MainLayout>
-      {!currentTrip.currently_passenger && response && !isError && (
+      {!currentTrip.currently_passenger && !currentTrip.currently_driver && response && !isError && (
         <section className='trip-list'>
           <SearchBar value={search} onChange={(e) => setSearch(e)} />
           <h2>Viajes disponibles</h2>

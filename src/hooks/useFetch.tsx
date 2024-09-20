@@ -6,6 +6,7 @@ import {
   ServiceParams,
   ServiceResponse
 } from '../config/types/services'
+import { useNavigate } from 'react-router-dom'
 
 const useFetch = <
   B extends ServiceBody,
@@ -22,6 +23,7 @@ const useFetch = <
   const [isError, setIsError] = useState<E>(undefined as unknown as E)
   const [response, setResponse] = useState<R>(undefined as unknown as R)
   const [params, setParams] = useState<P>()
+  const navigate  = useNavigate()
 
   const fetchService = async (params?: P) => {
     setParams(params)
@@ -37,6 +39,11 @@ const useFetch = <
         }
       )
       if (!response.ok) {
+        if(response.status === 401) {
+          localStorage.removeItem('tokens')
+          localStorage.removeItem('user')
+          navigate('/login')
+        }
         setIsError({
           type: 'service',
           status: response.status,
